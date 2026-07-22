@@ -1,0 +1,46 @@
+{
+  "version": "1",
+  "apps": {
+    "github.com/cocktailpeanut/ace-step-ui.pinokio": {
+      "remote": "https://github.com/cocktailpeanut/ace-step-ui.pinokio",
+      "checkpoints": [
+        {
+          "id": "1783145824120",
+          "hash": "sha256:119207775d7b7bcf1a59e4a50a55d75b7c5d0a2c39d34845a3f4a535ec327247",
+          "visibility": "public",
+          "system": null,
+          "sync": {
+            "status": "imported",
+            "at": 1783145824121,
+            "source": "https://api.pinokio.co",
+            "hash": "sha256:119207775d7b7bcf1a59e4a50a55d75b7c5d0a2c39d34845a3f4a535ec327247"
+          },
+          "decision": null
+        }
+      ]
+    }
+  },
+  "commits": {
+    "https://github.com/cocktailpeanut/ace-step-ui.pinokio": {
+      "68688b95bbe10f8a923801175c4577d9996fecf5": {
+        "subject": "Merge pull request #9 from cocktailpeanut/torchao-fix",
+        "authorName": "cocktailpeanut",
+        "committedAt": "2026-02-10T20:18:06-05:00"
+      }
+    },
+    "https://github.com/fspecii/ace-step-ui": {
+      "b9e24018e199f2a89976562e4f33213d67d25b9f": {
+        "subject": "docs(readme): add web development services section linking to websitefirma.ro",
+        "authorName": "fspecii",
+        "committedAt": "2026-06-04T23:47:26+03:00"
+      }
+    },
+    "https://github.com/ace-step/ace-step-1.5": {
+      "dce621408bee8c31b4fcf4811682eb9359e1bc94": {
+        "subject": "fix(build): track uv.lock in git for reproducible Docker builds (#1213)",
+        "authorName": "Gong Junmin",
+        "committedAt": "2026-05-18T22:03:43+08:00"
+      }
+    }
+  }
+}

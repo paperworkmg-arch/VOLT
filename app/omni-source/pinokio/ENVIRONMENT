@@ -1,0 +1,128 @@
+HOMEBREW_CACHE=./cache/HOMEBREW_CACHE
+XDG_CACHE_HOME=./cache/XDG_CACHE_HOME
+PIP_CACHE_DIR=./cache/PIP_CACHE_DIR
+UV_CACHE_DIR=./cache/UV_CACHE_DIR
+PIP_TMPDIR=./cache/PIP_TMPDIR
+TMPDIR=./cache/TMPDIR
+TEMP=./cache/TEMP
+TMP=./cache/TMP
+XDG_DATA_HOME=./cache/XDG_DATA_HOME
+XDG_CONFIG_HOME=./cache/XDG_CONFIG_HOME
+XDG_STATE_HOME=./cache/XDG_STATE_HOME
+PIP_CONFIG_FILE=./pipconfig
+CONDARC=./condarc
+PS1=<<PINOKIO_SHELL>> 
+GRADIO_ANALYTICS_ENABLED=False
+
+##########################################################################
+#
+# GRADIO_ALLOWED_PATHS
+#
+# This allows every Gradio app installed under Pinokio to serve files
+# outside of each app's root folder, which is useful for many cases.
+# Do not touch this unless you want to add additional paths
+#
+##########################################################################
+GRADIO_ALLOWED_PATHS=./
+
+##########################################################################
+#
+# PINOKIO_SHARE_VAR
+#
+# When you set this local variable from any script, it will trigger Pinokio
+# share actions (local sharing, cloudflare, ...)
+#
+# You can customize whether to avoid this using PINOKIO_SHARE_CLOUDFLARE
+# and PINOKIO_SHARE_LOCAL
+#
+##########################################################################
+PINOKIO_SHARE_VAR=url
+
+##########################################################################
+#
+# PINOKIO_SHARE_CLOUDFLARE
+# Set this variable to share the app publicly via cloudflare tunnel.
+#
+##########################################################################
+PINOKIO_SHARE_CLOUDFLARE=false
+
+##########################################################################
+#
+# PINOKIO_SCRIPT_DEFAULT
+# If this variable is false, 'default': true menu items in pinokio.js
+# will NOT automatically run
+#
+##########################################################################
+PINOKIO_SCRIPT_DEFAULT=true
+
+##########################################################################
+#
+# PINOKIO_DRIVE
+#
+# The virtual drive path.
+# Change it if you want to use a different path.
+# You can even enter an absolute path to use a folder outside of pinokio
+# or an entirely different disk drive
+#
+##########################################################################
+PINOKIO_DRIVE=./drive
+
+##########################################################################
+#
+# GRADIO_TEMP_DIR
+# All the files uploaded through gradio goes here.
+#
+# Delete this line to store the files under PINOKIO_HOME/cache/GRADIO_TEMPDIR
+# or change the path if you want to use a different path
+#
+##########################################################################
+GRADIO_TEMP_DIR=./cache/GRADIO_TEMP_DIR
+
+##########################################################################
+#
+# HF_HOME
+#
+# Huggingface cache
+# All the model files automatically downloaded through libraries like
+# diffusers, transformers, etc. will be stored under this path
+#
+# You can save disk space by deleting this line, which will store all
+# huggingface files under PINOKIO_HOME/cache/HF_HOME without redundancy.
+#
+##########################################################################
+HF_HOME=./cache/HF_HOME
+
+##########################################################################
+#
+# TORCH_HOME
+#
+# Torch hub cache
+# All the files automatically downloaded by pytorch will be stored here
+#
+# You can save disk space by deleting this line, which will store all
+# torch hub files under PINOKIO_HOME/cache/TORCH_HOME without redundancy.
+#
+##########################################################################
+TORCH_HOME=./cache/TORCH_HOME
+
+##########################################################################
+#
+# PINOKIO_SHARE_LOCAL
+# Set this variable to true to share the app on the local network.
+#
+##########################################################################
+PINOKIO_SHARE_LOCAL=false
+
+##########################################################################
+#
+# PINOKIO_SHARE_LOCAL_PORT
+# Set this variable to use fixed port for the local network sharing feature
+# If not specified, a random port will be assigned to the local proxy used
+# for local sharing.
+#
+##########################################################################
+PINOKIO_SHARE_LOCAL_PORT=
+
+HTTP_PROXY=
+HTTPS_PROXY=
+NO_PROXY=

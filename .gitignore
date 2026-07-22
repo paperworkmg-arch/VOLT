@@ -1,0 +1,79 @@
+# Dependencies
+node_modules/
+venv/
+.env
+.env.local
+app/.env
+app/dashboard/.env
+
+# Build outputs
+dist/
+build/
+*.pyc
+__pycache__/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Large files
+app/stable-audio-3/
+app/stabledaw/
+app/tascar/
+app/volt-dashboard/node_modules/
+app/env/
+env/
+cache/
+HF_HOME/
+
+# Database files
+*.db
+*.sqlite
+
+# Service account credentials
+service-account.json
+config/credentials.json
+config/gmail_credentials.json
+config/token.pickle
+
+# Audio files
+*.mp3
+*.wav
+*.m4a
+*.flac
+*.aac
+
+# Model files
+*.safetensors
+*.bin
+*.pt
+*.pth
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Omni-Studio merged large files (from older project)
+app/omni-source/Soundz/
+app/omni-source/Audio/
+app/omni-source/Music_Masters/
+app/omni-source/Logs/
+app/omni-source/acestep.vst3/
+app/omni-source/scripts/submissions/audio files/
+app/omni-source/daemon.log
+app/omni-source/agents/HERMES/venv/
+app/omni-source/agents/HERMES/.users/
+app/omni-source/stemdeck/.pinokio/
+app/omni-source/config/tokens/
+app/omni-source/Projects/

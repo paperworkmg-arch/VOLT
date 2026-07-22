@@ -1,0 +1,63 @@
+Thinking...
+Okay, I need to create a pitch email for WABE 90.1 FM about Mykel T. Brooks[6D[K
+Brooks. Let me start by recalling the user's instructions. The subject line[4D[K
+line must include "Grammy-Nominated," and the email should be three paragra[7D[K
+paragraphs with a clear call to action linking to the Afterparty portal. Al[2D[K
+Also, I need to mention the availability of the high-res media files.
+
+First, the target outlet is a radio station that's NPR/Classical, so the ho[2D[K
+hook should focus on the music aspect. The PR strategy says to highlight hi[2D[K
+his Grammy nomination, the track 'Toni Macaroni,' and the free studio hour [K
+for indie artists. I should mention his experience and the studio's premium[7D[K
+premium equipment.
+
+I need to start with the subject line. Maybe something like "Grammy-Nominat[15D[K
+"Grammy-Nominated Producer Mykel T. Brooks Offers Free Studio Time to Atlan[5D[K
+Atlanta Indie Artists via 'The Afterparty'." That includes the required ter[3D[K
+term and mentions the key points.
+
+In the first paragraph, introduce Mykel, his Grammy nomination, and the ini[3D[K
+initiative. Mention the free hour at Volt Records with the analog chains. T[1D[K
+Then, mention 'Toni Macaroni' and the live portal. 
+
+Second paragraph could focus on the impact of his initiative, giving back t[1D[K
+to the community, and the unique opportunity for artists. Maybe mention his[3D[K
+his background as a son of a Jamaican pastor to add a personal touch.
+
+Third paragraph should be the call to action, linking to the Afterparty por[3D[K
+portal and offering the high-res media files. Also, note that the media fil[3D[K
+files are ready to send.
+
+Wait, the user provided specific files like Toni_Macaroni_Master.wav, so I [K
+need to explicitly state that they're available. Also, check the rules agai[4D[K
+again to ensure compliance. Make sure not to exceed three paragraphs and ke[2D[K
+keep the call to action clear. Avoid any markdown, just plain text with the[3D[K
+the specified format.
+...done thinking.
+
+OUTLET: WABE 90.1 FM  
+CONTACT EMAIL: news@wabe.org  
+=========================================  
+SUBJECT: Grammy-Nominated Producer Mykel T. Brooks Offers Free Studio Time [K
+to Atlanta Indie Artists via 'The Afterparty'  
+
+Grammy-nominated producer and executive Mykel T. Brooks is redefining music[5D[K
+music creation with his groundbreaking platform *The Afterparty*, now featu[5D[K
+featuring the viral single “Toni Macaroni” (stream live at http://sqtheafte[16D[K
+http://sqtheafterparty.base44.app/). With 15+ years in hip-hop/R&B and a ba[2D[K
+background as the son of a Jamaican pastor, Brooks is leveraging his Grammy[6D[K
+Grammy pedigree to democratize studio access—offering independent Atlanta a[1D[K
+artists a **free hour** of elite tracking at Volt Records, home to premium [K
+analog chains like Neumann and Tube-Tech.  
+
+This initiative is more than a studio session; it’s a movement to empower i[1D[K
+indie creators with major-label quality tools. Brooks’ “Toni Macaroni” exem[4D[K
+exemplifies the sonic excellence possible through this partnership, blendin[7D[K
+blending innovation with the raw energy of Atlanta’s music scene. High-res [K
+media, including the master file *Toni_Macaroni_Master.wav*, is ready for i[1D[K
+immediate distribution.  
+
+Visit http://sqtheafterparty.base44.app/ to experience the track live and l[1D[K
+learn how artists can claim their free hour. For media inquiries or assets,[7D[K
+assets, contact directly—we’re eager to share this story of resilience, com[3D[K
+community, and sonic revolution.

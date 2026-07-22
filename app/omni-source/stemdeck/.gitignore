@@ -1,0 +1,83 @@
+# Python bytecode / native artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Python environments and package caches
+.venv/
+venv/
+env/
+.uv-cache/
+pip-wheel-metadata/
+
+# Python build outputs
+dist/
+*.egg-info/
+*.egg
+.eggs/
+
+# Version is git-derived (hatch-vcs); these are generated artifacts, never committed.
+app/_version.py
+static/version.json
+
+# Desktop dependencies and build outputs
+desktop/node_modules/
+desktop/src-tauri/target/
+desktop/src-tauri/gen/
+
+# Test, coverage, and type-check caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+
+# Runtime job artifacts and local build scratch
+data/
+jobs/
+settings.json
+.run/
+.build
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+logs/
+
+# Local dev scripts
+.local/
+
+# Local notes and agent/tool state
+.docs
+.issues_docs
+.claude/
+.playwright-mcp/
+
+# Codex: keep repo guidance, ignore local state/cache
+.codex/*
+.codex/AGENTS.md
+.codex/skills/
+.codex/skills/**
+.codex/cache/
+.codex/logs/
+.codex/tmp/
+
+# Editors and OS metadata
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Tool versions
+.python-version
+
+# Imported design references (kept local, not shipped)
+design/

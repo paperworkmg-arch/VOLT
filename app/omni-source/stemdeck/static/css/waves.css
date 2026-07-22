@@ -1,0 +1,1011 @@
+/* ─── Post-import studio dashboard ─── */
+
+.studio-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.studio-top-grid {
+  display: grid;
+  grid-template-columns: minmax(760px, 1.42fr) minmax(560px, 1fr);
+  gap: 12px;
+}
+
+.presence-panel,
+.preview-panel,
+.stems-panel,
+.wave-editor {
+  border-radius: 12px;
+}
+
+.panel-title,
+.preview-head {
+  color: #d4d8de;
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.presence-panel {
+  min-height: 292px;
+  padding: 17px 20px 16px;
+}
+
+.presence-ruler {
+  display: grid;
+  grid-template-columns: 136px repeat(8, 1fr);
+  margin: 13px 0 5px;
+  color: #bec4cb;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+
+.presence-grid {
+  display: grid;
+  grid-template-columns: 136px 1fr;
+  gap: 12px;
+}
+
+.presence-labels {
+  display: grid;
+  grid-template-rows: repeat(6, 33px);
+  align-items: center;
+  color: #cbd0d7;
+  font-weight: 700;
+}
+
+.presence-labels span {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  font-size: 16px;
+}
+
+.presence-icon {
+  width: 26px;
+  height: 26px;
+  flex: 0 0 auto;
+  filter: drop-shadow(0 0 8px color-mix(in srgb, currentColor 28%, transparent));
+}
+
+.presence-bars {
+  position: relative;
+  display: grid;
+  grid-template-rows: repeat(6, 33px);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  background:
+    repeating-linear-gradient(90deg, rgba(148, 163, 184, 0.07) 0 1px, transparent 1px 6.25%),
+    rgba(2, 9, 14, 0.45);
+}
+
+/* DAW-style playhead overlay -- thin vertical line that rides the
+   top edge of the bars container and tracks the current play time.
+   transform: translateX(-50%) so the line is centered on the exact
+   percentage. */
+.presence-playhead {
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  left: 0;
+  width: 1.5px;
+  background: var(--gold);
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 4;
+  box-shadow: 0 0 6px color-mix(in srgb, var(--gold) 70%, transparent);
+}
+
+.presence-playhead.hidden {
+  display: none;
+}
+
+.presence-bars i {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.09);
+  background: rgba(4, 13, 19, 0.34);
+  color: var(--stem-color);
+  --cell-hi: color-mix(in srgb, currentColor 78%, transparent);
+  --cell-md: color-mix(in srgb, currentColor 52%, transparent);
+  --cell-lo: color-mix(in srgb, currentColor 28%, transparent);
+  --cells:
+    repeating-linear-gradient(90deg,
+      var(--cell-lo) 0 7px,
+      transparent 7px 9px,
+      var(--cell-md) 9px 16px,
+      transparent 16px 18px,
+      var(--cell-hi) 18px 27px,
+      transparent 27px 31px,
+      var(--cell-md) 31px 36px,
+      transparent 36px 42px,
+      var(--cell-lo) 42px 49px,
+      transparent 49px 54px);
+  --presence-mask: linear-gradient(90deg, black 0 100%);
+}
+
+.presence-bars i::before,
+.presence-bars i::after {
+  content: "";
+  position: absolute;
+  left: 16px;
+  right: 10px;
+  top: 6px;
+  bottom: 6px;
+  border-radius: 2px;
+  background: var(--cells);
+  -webkit-mask-image: var(--presence-mask);
+  mask-image: var(--presence-mask);
+  filter: drop-shadow(0 0 7px color-mix(in srgb, currentColor 22%, transparent));
+}
+
+.presence-bars i::after {
+  top: 9px;
+  bottom: 9px;
+  opacity: 0.34;
+  transform: translateX(5px);
+  background:
+    repeating-linear-gradient(90deg,
+      transparent 0 8px,
+      var(--cell-lo) 8px 13px,
+      transparent 13px 18px,
+      var(--cell-md) 18px 22px,
+      transparent 22px 29px);
+}
+
+.presence-bars i:nth-child(2) {
+  --cell-hi: color-mix(in srgb, currentColor 82%, transparent);
+  --cell-md: color-mix(in srgb, currentColor 58%, transparent);
+  --cell-lo: color-mix(in srgb, currentColor 34%, transparent);
+  --presence-mask:
+    linear-gradient(90deg,
+      black 0 72%, transparent 72% 73.5%, black 73.5% 100%);
+}
+
+.presence-bars i:nth-child(3) {
+  --cell-hi: color-mix(in srgb, currentColor 72%, transparent);
+  --cell-md: color-mix(in srgb, currentColor 48%, transparent);
+  --cell-lo: color-mix(in srgb, currentColor 24%, transparent);
+  --presence-mask:
+    linear-gradient(90deg,
+      black 0 15%, transparent 15% 31.8%, black 31.8% 63.5%,
+      transparent 63.5% 85.7%, black 85.7% 98%, transparent 98%);
+}
+
+.presence-bars i:nth-child(4) {
+  --cell-hi: color-mix(in srgb, currentColor 70%, transparent);
+  --cell-md: color-mix(in srgb, currentColor 46%, transparent);
+  --cell-lo: color-mix(in srgb, currentColor 24%, transparent);
+  --presence-mask:
+    linear-gradient(90deg,
+      transparent 0 3.2%, black 3.2% 12.8%, transparent 12.8% 16.5%,
+      black 16.5% 91.5%, transparent 91.5% 94.7%, black 94.7% 99%,
+      transparent 99%);
+}
+
+.presence-bars i:nth-child(5) {
+  --cell-hi: color-mix(in srgb, currentColor 76%, transparent);
+  --cell-md: color-mix(in srgb, currentColor 50%, transparent);
+  --cell-lo: color-mix(in srgb, currentColor 26%, transparent);
+  --presence-mask:
+    linear-gradient(90deg,
+      black 0 4.5%, transparent 4.5% 15.8%, black 15.8% 62.5%,
+      transparent 62.5% 70.5%, black 70.5% 96%, transparent 96%);
+}
+
+.presence-bars i:nth-child(6) {
+  --cell-hi: color-mix(in srgb, currentColor 68%, transparent);
+  --cell-md: color-mix(in srgb, currentColor 45%, transparent);
+  --cell-lo: color-mix(in srgb, currentColor 23%, transparent);
+  --presence-mask:
+    linear-gradient(90deg,
+      black 0 12%, transparent 12% 23.5%, black 23.5% 52.2%,
+      transparent 52.2% 60.8%, black 60.8% 97%, transparent 97%);
+}
+
+.presence-bars i:first-child {
+  --cell-hi: color-mix(in srgb, currentColor 74%, transparent);
+  --cell-md: color-mix(in srgb, currentColor 50%, transparent);
+  --cell-lo: color-mix(in srgb, currentColor 25%, transparent);
+  --presence-mask:
+    linear-gradient(90deg,
+      black 0 15.2%, transparent 15.2% 19%, black 19% 42.7%,
+      transparent 42.7% 50.3%, black 50.3% 60.6%, transparent 60.6% 65.8%,
+      black 65.8% 88.6%, transparent 88.6% 93.7%, black 93.7% 97.6%,
+      transparent 97.6%);
+}
+
+.preview-panel {
+  min-height: 292px;
+  padding: 14px 18px 16px;
+}
+
+.preview-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--glass-line);
+}
+
+.preview-head div {
+  display: flex;
+  gap: 12px;
+}
+
+.preview-head button,
+.footer-btn {
+  min-height: 36px;
+  padding: 0 16px;
+  border: 1px solid var(--glass-line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.04);
+  color: #d8dde3;
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.footer-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+.preview-head button {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.preview-mixer-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 94px;
+  gap: 22px;
+  align-items: stretch;
+  padding-top: 14px;
+}
+
+.master-strip {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto 128px;
+  gap: 10px 8px;
+  justify-items: center;
+  color: #d1d6dd;
+}
+
+.master-strip .master-fader-track {
+  height: 128px;
+}
+
+.master-strip > span {
+  grid-column: 1 / -1;
+}
+
+.master-scale {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #a8b0ba;
+  font-size: 12px;
+}
+
+.studio-wave-grid {
+  display: grid;
+  grid-template-columns: 424px minmax(0, 1fr);
+  gap: 10px;
+}
+
+.stems-panel {
+  min-height: 326px;
+  padding: 16px 18px;
+}
+
+.stem-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  /* Aligns the first row with the first waveform lane in the wave-editor
+     panel next door. The wave editor stacks (zoom-toolbar) + (ruler)
+     above its first lane; the stems panel only has the "Stems" title.
+     This top padding fills the difference so each Vocals/Drums/etc.
+     label sits exactly opposite its corresponding waveform. */
+  margin-top: 46px;
+}
+
+.stem-list span {
+  /* Match the multitrack lane height (48px set in player.js wireUpAudio
+     options.height, plus 1px border between lanes). Combined with the
+     1px gap above, each row strides 49px -- identical to wave lanes. */
+  height: 48px;
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr) 34px 34px 36px 30px;
+  align-items: center;
+  gap: 10px;
+  color: #d5dae0;
+  font-size: 17px;
+}
+
+.stem-list em {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  color: #d5dae0;
+  font-style: normal;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.stem-icon {
+  width: 27px;
+  height: 27px;
+  flex: 0 0 auto;
+  color: var(--stem-color);
+  filter: drop-shadow(0 0 8px color-mix(in srgb, currentColor 26%, transparent));
+}
+
+.drag-handle {
+  width: 14px;
+  height: 22px;
+  opacity: 0.56;
+  background:
+    radial-gradient(circle, #c9ced6 1.4px, transparent 1.7px) 0 0 / 7px 7px;
+}
+
+.stem-list b {
+  display: inline-grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.055);
+  color: #d8dde4;
+  font-size: 14px;
+  cursor: pointer;
+  user-select: none;
+  transition:
+    background-color var(--t-base) var(--easing),
+    color var(--t-base) var(--easing),
+    transform var(--t-fast) var(--easing);
+}
+
+.stem-list b:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.stem-list b:active {
+  transform: scale(0.92);
+}
+
+.stem-list b:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 1px;
+}
+
+.stem-list .stem-mute.active {
+  background: var(--danger);
+  color: white;
+}
+
+.stem-list .stem-solo.active {
+  background: var(--gold);
+  color: #17130c;
+}
+
+/* Mute the row visually when its stem is muted (matches lane-header). */
+.stem-list span.muted {
+  opacity: 0.45;
+}
+
+.stem-list button {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--glass-line);
+  border-radius: 7px;
+  background:
+    radial-gradient(circle at 50% 52%, transparent 0 6px, currentColor 6px 8px, transparent 8px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.025));
+  color: #cfd5dc;
+  cursor: pointer;
+  transition:
+    border-color var(--t-base) var(--easing),
+    color var(--t-base) var(--easing),
+    background-color var(--t-base) var(--easing);
+}
+
+.stem-list button:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.stem-list .stem-monitor.active {
+  color: var(--gold);
+  border-color: var(--gold);
+  background:
+    radial-gradient(circle at 50% 52%, transparent 0 6px, currentColor 6px 8px, transparent 8px),
+    color-mix(in srgb, var(--gold) 18%, transparent);
+}
+
+.mini-meter {
+  position: relative;
+  width: 20px;
+  height: 34px;
+  border-radius: 4px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  background:
+    linear-gradient(to top,
+      rgba(48, 197, 87, 0.14) 0 55%,
+      rgba(225, 178, 46, 0.14) 55% 80%,
+      rgba(214, 64, 64, 0.14) 80% 100%),
+    rgba(8, 14, 20, 0.85);
+  overflow: hidden;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.45);
+}
+
+.mini-meter::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  background: linear-gradient(to top,
+    #30c557 0%,
+    #30c557 50%,
+    #e1b22e 60%,
+    #e1b22e 78%,
+    #d64040 88%,
+    #d64040 100%);
+  transform: scaleY(var(--vu-scale, 0));
+  transform-origin: bottom;
+  /* Short transition so the meter still reads as fluid rather than
+     stepwise, but quick enough that drum-hit transients aren't washed
+     out. The peak-hold logic in audio.js does the real "VU feel". */
+  transition: transform 30ms linear;
+  pointer-events: none;
+}
+
+.mini-meter::after {
+  content: "";
+  position: absolute;
+  left: 1px;
+  right: 1px;
+  height: 2px;
+  bottom: calc(var(--vu-peak-pct, 0) * 1%);
+  background: rgba(255, 255, 255, 0.78);
+  opacity: var(--vu-peak-opacity, 0);
+  transition: bottom 80ms linear, opacity 180ms linear;
+  pointer-events: none;
+}
+
+.wave-editor {
+  min-width: 0;
+  min-height: 326px;
+  padding: 12px 14px 14px;
+}
+
+.wave-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+/* Shared scroll viewport for the ruler + waves. Putting both in the
+   same scroll container with a single inner canvas guarantees the
+   ruler-time element and the loop-region overlay share one coordinate
+   system, so click positions on the ruler line up perfectly with the
+   visual loop bars. The canvas also widens with --zoom so a single CSS
+   variable drives both visual layout and multitrack pxPerSec. */
+.wave-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  background: rgba(3, 10, 15, 0.52);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(216, 168, 74, 0.65) rgba(148, 163, 184, 0.12);
+  scroll-behavior: smooth;
+}
+
+.wave-scroll::-webkit-scrollbar {
+  height: 10px;
+}
+
+.wave-scroll::-webkit-scrollbar-track {
+  background: rgba(148, 163, 184, 0.1);
+  border-radius: 999px;
+}
+
+.wave-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, rgba(216, 168, 74, 0.55), rgba(245, 203, 110, 0.9));
+  border: 2px solid rgba(3, 10, 15, 0.72);
+  border-radius: 999px;
+}
+
+.wave-canvas {
+  position: relative;
+  width: calc(100% * var(--zoom, 1));
+  min-width: 100%;
+}
+
+.lanes-ruler {
+  height: 30px;
+}
+
+.lanes-ruler-time {
+  position: relative;
+  height: 100%;
+  cursor: crosshair;
+  touch-action: none;
+  user-select: none;
+}
+
+.tick {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-left: 1px solid rgba(148, 163, 184, 0.2);
+  padding-left: 4px;
+  display: flex;
+  align-items: flex-start;
+  pointer-events: none;
+}
+
+.tick-label {
+  color: #b8bec7;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.playhead-marker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 8;
+}
+
+.app:not(.is-import) .playhead-marker::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 8px;
+  width: 1.5px;
+  height: calc(var(--wave-playhead-h, 480px) + 26px);
+  transform: translateX(-50%);
+  background: #e54e4e;
+  box-shadow: 0 0 7px rgba(229, 78, 78, 0.34);
+  pointer-events: none;
+}
+
+.zoom-tools {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #c9ced6;
+  font-size: 18px;
+}
+
+.zoom-slider {
+  width: 116px;
+  height: 18px;
+  accent-color: var(--gold);
+  background: transparent;
+  cursor: pointer;
+}
+
+.zoom-slider::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--gold) calc(var(--zoom-frac, 0) * 100%), rgba(148, 163, 184, 0.2) calc(var(--zoom-frac, 0) * 100%));
+}
+
+.zoom-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  margin-top: -5px;
+  border-radius: 50%;
+  background: #f3d37c;
+  border: 2px solid rgba(255, 255, 255, 0.78);
+  box-shadow: 0 0 10px rgba(216, 168, 74, 0.28);
+}
+
+.zoom-slider::-moz-range-track {
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--gold) calc(var(--zoom-frac, 0) * 100%), rgba(148, 163, 184, 0.2) calc(var(--zoom-frac, 0) * 100%));
+}
+
+.zoom-slider::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #f3d37c;
+  border: 2px solid rgba(255, 255, 255, 0.78);
+  box-shadow: 0 0 10px rgba(216, 168, 74, 0.28);
+}
+
+.zoom-tools button {
+  min-height: 32px;
+  min-width: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--glass-line);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #d8dde3;
+  font: inherit;
+  cursor: pointer;
+  transition: background-color var(--t-base) var(--easing);
+}
+
+.zoom-tools button:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.zoom-tools button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.zoom-tools #zoom-out,
+.zoom-tools #zoom-in {
+  font-size: 22px;
+  padding: 0;
+  width: 32px;
+}
+
+.zoom-tools .kebab {
+  width: 32px;
+  padding: 0;
+  font-size: 22px;
+}
+
+.waves-column {
+  min-width: 0;
+  position: relative;
+  overflow: hidden;
+  min-height: 274px;
+  --wave-gutter: 0px;
+}
+
+.waves-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.waves-grid .grid-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(148, 163, 184, 0.14);
+}
+
+#multitrack-container {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.stem-waveform-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.stem-waveform-row {
+  /* Fixed 48px height matches the multitrack lane height
+     (set in player.js wireUpAudio options.height: 48) and the
+     stem-list row height in the Stems sidebar. Without this the
+     overlay used flex distribution across the whole waves-column,
+     producing rows ~0.8 px taller than the stem-list rows -- the
+     drift accumulated across 6 rows and visibly misaligned the
+     stem labels with their waveforms. */
+  flex: 0 0 48px;
+  height: 48px;
+  position: relative;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+}
+
+.stem-waveform-row:last-child {
+  border-bottom: 0;
+}
+
+.stem-waveform-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.stem-waveform-svg path,
+.stem-waveform-svg rect {
+  fill: var(--stem-color);
+  opacity: 0.78;
+  filter: drop-shadow(0 0 7px color-mix(in srgb, var(--stem-color) 30%, transparent));
+}
+
+#multitrack-container > div {
+  border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+  background: transparent !important;
+}
+
+#multitrack-container > div:last-child {
+  border-bottom: 0;
+}
+
+#multitrack-container [part="timeline-wrapper"],
+#multitrack-container [part^="timeline-"] {
+  display: none !important;
+}
+
+.waves-column [style*="z-index: 10"] {
+  transform: translateX(-50%);
+}
+
+.loop-region {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: rgba(216, 168, 74, 0.1);
+  border-left: 2px solid var(--gold);
+  border-right: 2px solid var(--gold);
+  box-shadow:
+    inset 1px 0 0 rgba(255, 255, 255, 0.18),
+    inset -1px 0 0 rgba(255, 255, 255, 0.18);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.lane-placeholder {
+  height: 48px;
+  position: relative;
+}
+
+.lane-placeholder::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+  background: var(--lane-color, var(--line));
+  opacity: 0.55;
+}
+
+.transport-footer {
+  min-height: 86px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  align-items: center;
+  gap: 24px;
+  padding: 6px 4px 0;
+}
+
+.transport-footer .np-transport {
+  justify-self: center;
+}
+
+.footer-btn {
+  min-height: 36px;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* ─── Screenshot-aligned DAW layout ─── */
+
+.app:not(.is-import) .studio-dashboard {
+  flex: 1 1 auto;
+  display: grid;
+  grid-template-columns:
+    minmax(
+      clamp(340px, calc((var(--visible-track-count, 6) * 70px) + 112px), 650px),
+      clamp(360px, calc((var(--visible-track-count, 6) * 78px) + 128px), 720px)
+    )
+    minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) minmax(74px, 86px);
+  gap: 10px;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.app:not(.is-import) .studio-top-grid,
+.app:not(.is-import) .studio-wave-grid {
+  display: contents;
+}
+
+.app:not(.is-import) .presence-panel {
+  display: none;
+}
+
+.app:not(.is-import) .preview-panel {
+  grid-column: 1;
+  grid-row: 1;
+  min-height: 0;
+  padding: 10px 8px 12px;
+}
+
+.app:not(.is-import) .wave-editor {
+  grid-column: 2;
+  grid-row: 1;
+  min-height: 0;
+  padding: 6px 12px;
+  overflow: hidden;
+}
+
+.app:not(.is-import) .stems-panel {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: stretch;
+  width: 48px;
+  /* 6px panel padding + 32px toolbar + 34px ruler = 72px top;
+     6px matches wave-editor bottom padding so height == waves-column height */
+  margin: 72px 0 6px 12px;
+  height: auto;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.app:not(.is-import) .stems-panel .panel-title {
+  display: none;
+}
+
+.app:not(.is-import) .stem-list {
+  height: 100%;
+  margin: 0;
+  gap: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.app:not(.is-import) .stem-list span {
+  flex: 1 1 0;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  place-items: center;
+  gap: 0;
+  color: var(--stem-color);
+}
+
+.app:not(.is-import) .stem-list .drag-handle,
+.app:not(.is-import) .stem-list b,
+.app:not(.is-import) .stem-list button,
+.app:not(.is-import) .stem-list .mini-meter {
+  display: none;
+}
+
+.app:not(.is-import) .stem-list em {
+  display: grid;
+  place-items: center;
+  font-size: 0;
+}
+
+.app:not(.is-import) .stem-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.app:not(.is-import) .wave-toolbar {
+  height: 30px;
+  margin: 0 0 2px;
+}
+
+.app:not(.is-import) .wave-scroll {
+  height: calc(100% - 32px);
+  overflow-x: auto;
+  overflow-y: hidden;
+  border-radius: 8px;
+}
+
+.app:not(.is-import) .wave-canvas {
+  height: 100%;
+}
+
+.app:not(.is-import) .lanes-ruler {
+  height: 34px;
+  margin-left: 48px;
+}
+
+.app:not(.is-import) .waves-column {
+  min-height: calc(100% - 34px);
+  height: calc(100% - 34px);
+  padding-left: 48px;
+  --wave-gutter: 48px;
+}
+
+.app:not(.is-import) .waves-grid {
+  left: 48px;
+}
+
+.app:not(.is-import) #multitrack-container {
+  position: absolute;
+  inset: 0 0 0 48px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.app:not(.is-import) .stem-waveform-layer {
+  left: 48px;
+  right: 0;
+  /* waves-column already starts below the ruler, no offset needed */
+  top: 0;
+  bottom: 0;
+  height: auto;
+}
+
+.app:not(.is-import) .stem-waveform-row {
+  flex: 1 1 0;
+  height: auto;
+  min-height: 0;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.11);
+}
+
+.app:not(.is-import) .stem-waveform-svg {
+  inset: 0;
+  height: 100%;
+}
+
+.app:not(.is-import) .stem-waveform-svg path,
+.app:not(.is-import) .stem-waveform-svg rect {
+  opacity: 0.92;
+  filter: none;
+}
+
+.app:not(.is-import) .transport-footer {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(120px, 1fr) auto minmax(120px, 1fr);
+  align-items: center;
+  justify-items: stretch;
+  gap: 22px;
+  padding: 14px 16px;
+  border: 1px solid var(--glass-line);
+  border-radius: 10px;
+  background:
+    radial-gradient(circle at 50% 0, rgba(216, 168, 74, 0.05), transparent 28rem),
+    rgba(11, 22, 30, 0.68);
+}
+
+.app:not(.is-import) .footer-btn {
+  min-width: 100px;
+  min-height: 36px;
+  padding: 0 14px;
+  font-size: 13px;
+  gap: 7px;
+}
+
+.app:not(.is-import) .transport-footer .np-transport {
+  grid-column: 2;
+  justify-self: center;
+}
+
+.footer-actions {
+  display: flex;
+  grid-column: 3;
+  justify-self: end;
+  gap: 18px;
+}

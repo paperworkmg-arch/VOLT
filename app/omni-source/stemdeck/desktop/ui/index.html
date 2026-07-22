@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StemDeck Launcher</title>
+    <link rel="stylesheet" href="./setup.css" />
+  </head>
+  <body>
+    <main class="setup-shell">
+      <section class="setup-card">
+        <div class="brand-row">
+          <h1>StemDeck</h1>
+          <span>ALPHA</span>
+        </div>
+        <p class="subtitle">Preparing the local audio engine, first run will take a while...</p>
+
+        <ol class="setup-steps" id="steps">
+          <li data-step="runtime">Setting up local runtime</li>
+          <li data-step="workspace">Creating workspace</li>
+          <li data-step="ffmpeg">Checking FFmpeg</li>
+          <li data-step="gpu">Configuring compute device</li>
+          <li data-step="model">Checking AI separation model</li>
+          <li data-step="backend">Starting backend</li>
+        </ol>
+
+        <p class="status" id="status">Starting setup...</p>
+        <div class="progress-wrap hidden" id="progress-wrap">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <pre class="details hidden" id="details"></pre>
+
+        <div class="actions">
+          <button id="retry" type="button" class="hidden">Retry</button>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="./setup.js"></script>
+  </body>
+</html>

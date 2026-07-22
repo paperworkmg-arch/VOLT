@@ -1,0 +1,33 @@
+name: SLSA Generic Generator
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+  id-token: write
+  actions: read
+
+jobs:
+  slsa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build release artifacts
+        run: |
+          tar -czf omni-studio-${{ github.ref_name }}.tar.gz \
+            --exclude='.git' \
+            --exclude='node_modules' \
+            --exclude='app/stable-audio-3' \
+            --exclude='app/stabledaw' \
+            --exclude='app/tascar' \
+            --exclude='cache' \
+            --exclude='env' \
+            -C .. omni-studio
+      - name: Generate SLSA provenance
+        uses: slsa-framework/slsa-github-generator@v2.1.0
+        with:
+          base64-subjects: "${{ hashFiles('omni-studio-*.tar.gz') }}"
+          upload-assets: true

@@ -1,0 +1,302 @@
+#!/usr/bin/env python3
+"""
+Omni-Studio Orchestrator v1
+============================
+Central dispatch for the autonomous music production OS.
+Routes commands to the correct agent pipeline.
+"""
+
+import json
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+
+HOME = Path.home()
+OMNI_DIR = HOME / "Omni-Studio"
+sys.path.insert(0, str(OMNI_DIR / "pipeline"))
+sys.path.insert(0, str(HOME))  # for catalog.portfolio (lives at ~/catalog/)
+
+from sop001_production import run_pipeline, ASSETS_ROOT
+from sop002_studio import create_session_invoice, generate_template
+from sop003_creation import create_track
+from sop004_suno import organize_stems, watch_inbox, generate_suno_style_prompt
+
+try:
+    from sop004_suno import SUNO_INBOX
+except ImportError:
+    SUNO_INBOX = HOME / "Omni-Studio" / "suno_inbox"
+from sop005_finance import value_catalog, generate_pro_registration, yield_dashboard
+from sop006_ascap import generate_ebr_csv, generate_ascap_xml, generate_instructions
+from sop007_ep_workflow import print_ep_workflow, batch_split_sheets, EP
+import subprocess
+
+HISTORY = OMNI_DIR / "history.json"
+HISTORY.parent.mkdir(exist_ok=True)
+
+
+def log_command(command: str, result: dict) -> None:
+    """Append to session history."""
+    entry = {
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "command": command,
+        "result": result,
+    }
+    if HISTORY.exists():
+        hist = json.loads(HISTORY.read_text())
+    else:
+        hist = []
+    hist.append(entry)
+    HISTORY.write_text(json.dumps(hist, indent=2))
+
+
+def cmd_help() -> None:
+    print("""
+Omni-Studio Orchestrator — Command Reference
+
+PRODUCTION & CREATIVE
+  create <title> [--genre] [--key] [--bpm] [--artist]
+    Initialize a new track (lyrics, arrangement, production notes)
+
+  produce <title> --artist [--bpm] [--key] [--genre]
+    Create asset folder and split sheet
+
+  full <title> --artist [--genre] [--key] [--bpm] [--theme]
+    Execute end-to-end: create → produce → invoice
+
+  template <name> [--bpm] [--key]
+    Configure DAW session specs (trap_production, r&b_production, drill_production)
+
+  ep [--create] [--split-sheets]
+    Initialize the MIDNIGHT PROTOCOL EP project
+
+AI & AUDIO ANALYSIS
+  suno <source_dir> [--title] [--artist] [--genre] [--bpm] [--key]
+    Ingest Suno stems into canonical asset tree with C2PA metadata
+
+  suno --analyze
+    Trigger "Listen → Extract → Describe" pipeline (metadata, BPM, key, semantic tags)
+
+  suno-prompt [--genre] [--bpm] [--key]
+    Generate 5-dimension Suno custom style prompts
+
+OPERATIONS & BUSINESS
+  invoice <project> <artist> [--service] [--hours] [--rush]
+    Generate a session invoice
+
+  register <title> [--artist] [--ipi] [--isrc] [--iswc]
+    Generate PRO registration text for ASCAP/BMI
+
+  ascap
+    Generate batch EBR (CSV/XML) files for unregistered tracks
+
+  catalog [--report]
+    Show portfolio summary or full status report
+
+  finance [value|dashboard]
+    Catalog valuation, royalty estimates, and yield metrics
+
+  freelance [leads|proposals|auto-apply|project|status]
+    Manage prospecting, proposals, and delivery
+
+SYSTEM & MAINTENANCE
+  help
+    Display this command reference
+""")
+
+
+def cmd_catalog(report: bool = False) -> None:
+    from catalog.portfolio import main as portfolio_main
+    portfolio_main()
+    if report:
+        p = HOME / "catalog" / "portfolio.json"
+        if p.exists():
+            print(p.read_text())
+
+
+def cmd_full(
+    title: str, artist: str = "Various", genre: str = "Trap",
+    key: str = "Dm", bpm: int = 140, theme: str = "", mood: str = "Dark"
+) -> dict:
+    """End-to-end: create → produce → invoice."""
+    print("=" * 60)
+    print(f"FULL PIPELINE: {title}")
+    print("=" * 60)
+
+    # Step 1: Create (lyrics + arrangement)
+    creation = create_track(title, genre, key, bpm, theme, mood, artist=artist)
+    print()
+
+    # Step 2: Produce (asset folder + split sheet)
+    produce = run_pipeline(title, artist=artist, bpm=bpm, key=key, genre=genre)
+    print()
+
+    # Step 3: Invoice
+    inv = create_session_invoice(title, artist, "production", hours=3.0)
+    print()
+
+    result = {
+        "status": "complete",
+        "title": title,
+        "artist": artist,
+        "creation": creation.get("chord_progression", []),
+        "asset_path": produce.get("paths", {}).get("root", ""),
+        "invoice_id": inv.get("invoice_id", ""),
+        "total_charged": inv.get("total", 0),
+    }
+
+    log_command(f"full {title}", result)
+    print(f"[DONE] Full pipeline complete for \"{title}\"")
+    return result
+
+
+def main() -> None:
+    if len(sys.argv) < 2:
+        cmd_help()
+        sys.exit(1)
+
+    command = sys.argv[1]
+
+    if command == "help":
+        cmd_help()
+
+    elif command == "catalog":
+        cmd_catalog("--report" in sys.argv)
+
+    elif command == "template":
+        name = sys.argv[2] if len(sys.argv) > 2 else "trap_production"
+        kwargs = {}
+        for i, arg in enumerate(sys.argv[3:], 3):
+            if arg == "--bpm" and i + 1 < len(sys.argv):
+                kwargs["bpm"] = int(sys.argv[i + 1])
+            if arg == "--key" and i + 1 < len(sys.argv):
+                kwargs["key"] = sys.argv[i + 1]
+        t = generate_template(name, **kwargs)
+        print(json.dumps(t, indent=2))
+
+    elif command == "create":
+        title = sys.argv[2] if len(sys.argv) > 2 else ""
+        if not title:
+            print("Usage: create <title> [--genre ...]")
+            sys.exit(1)
+        kwargs = {"title": title, "artist": "Various"}
+        for i, arg in enumerate(sys.argv[3:], 3):
+            if arg == "--genre" and i + 1 < len(sys.argv): kwargs["genre"] = sys.argv[i + 1]
+            if arg == "--key" and i + 1 < len(sys.argv): kwargs["key"] = sys.argv[i + 1]
+            if arg == "--bpm" and i + 1 < len(sys.argv): kwargs["bpm"] = int(sys.argv[i + 1])
+            if arg == "--artist" and i + 1 < len(sys.argv): kwargs["artist"] = sys.argv[i + 1]
+            if arg == "--theme" and i + 1 < len(sys.argv): kwargs["theme"] = sys.argv[i + 1]
+            if arg == "--mood" and i + 1 < len(sys.argv): kwargs["mood"] = sys.argv[i + 1]
+        result = create_track(**kwargs)
+        log_command(f"create {title}", result)
+        print(f"[OK] Track \"{title}\" created.")
+
+    elif command == "produce":
+        title = sys.argv[2] if len(sys.argv) > 2 else ""
+        if not title:
+            print("Usage: produce <title> --artist \"Name\"")
+            sys.exit(1)
+        kwargs = {"project_name": title, "artist": "Various", "producer": "Michael Brooks"}
+        for i, arg in enumerate(sys.argv[3:], 3):
+            if arg == "--artist" and i + 1 < len(sys.argv): kwargs["artist"] = sys.argv[i + 1]
+            if arg == "--bpm" and i + 1 < len(sys.argv): kwargs["bpm"] = int(sys.argv[i + 1])
+            if arg == "--key" and i + 1 < len(sys.argv): kwargs["key"] = sys.argv[i + 1]
+            if arg == "--genre" and i + 1 < len(sys.argv): kwargs["genre"] = sys.argv[i + 1]
+        result = run_pipeline(**kwargs)
+        log_command(f"produce {title}", result)
+        print(f"[OK] Asset folder created for \"{title}\"")
+
+    elif command == "invoice":
+        if len(sys.argv) < 4:
+            print("Usage: invoice <project> <artist> [--service mixing] [--hours 3]")
+            sys.exit(1)
+        project, artist = sys.argv[2], sys.argv[3]
+        kwargs = {"project_name": project, "artist": artist}
+        for i, arg in enumerate(sys.argv[4:], 4):
+            if arg == "--service" and i + 1 < len(sys.argv): kwargs["service_type"] = sys.argv[i + 1]
+            if arg == "--hours" and i + 1 < len(sys.argv): kwargs["hours"] = float(sys.argv[i + 1])
+            if arg == "--rush": kwargs["rush"] = True
+        result = create_session_invoice(**kwargs)
+        log_command(f"invoice {project}", result)
+        print(f"[INVOICE] {project} -> {artist}: ${result['total']}")
+
+    elif command == "full":
+        title = sys.argv[2] if len(sys.argv) > 2 else ""
+        if not title:
+            print("Usage: full <title> --artist \"Name\" [--genre Trap] [--key Dm] [--bpm 140]")
+            sys.exit(1)
+        kwargs = {"title": title}
+        for i, arg in enumerate(sys.argv[3:], 3):
+            if arg == "--artist" and i + 1 < len(sys.argv): kwargs["artist"] = sys.argv[i + 1]
+            if arg == "--genre" and i + 1 < len(sys.argv): kwargs["genre"] = sys.argv[i + 1]
+            if arg == "--key" and i + 1 < len(sys.argv): kwargs["key"] = sys.argv[i + 1]
+            if arg == "--bpm" and i + 1 < len(sys.argv): kwargs["bpm"] = int(sys.argv[i + 1])
+            if arg == "--theme" and i + 1 < len(sys.argv): kwargs["theme"] = sys.argv[i + 1]
+            if arg == "--mood" and i + 1 < len(sys.argv): kwargs["mood"] = sys.argv[i + 1]
+        result = cmd_full(**kwargs)
+
+    elif command == "suno":
+        source = Path(sys.argv[2]) if len(sys.argv) > 2 else SUNO_INBOX
+        kwargs = {"source_dir": source, "title": source.name}
+        for i, arg in enumerate(sys.argv[3:], 3):
+            if arg == "--title" and i + 1 < len(sys.argv): kwargs["title"] = sys.argv[i + 1]
+            if arg == "--artist" and i + 1 < len(sys.argv): kwargs["artist"] = sys.argv[i + 1]
+            if arg == "--genre" and i + 1 < len(sys.argv): kwargs["genre"] = sys.argv[i + 1]
+            if arg == "--bpm" and i + 1 < len(sys.argv): kwargs["bpm"] = int(sys.argv[i + 1])
+            if arg == "--key" and i + 1 < len(sys.argv): kwargs["key"] = sys.argv[i + 1]
+        result = organize_stems(**kwargs)
+        log_command(f"suno {kwargs['title']}", result)
+
+    elif command == "suno-prompt":
+        kwargs = {}
+        for i, arg in enumerate(sys.argv[2:], 2):
+            if arg == "--genre" and i + 1 < len(sys.argv): kwargs["genre"] = sys.argv[i + 1]
+            if arg == "--bpm" and i + 1 < len(sys.argv): kwargs["bpm"] = int(sys.argv[i + 1])
+            if arg == "--key" and i + 1 < len(sys.argv): kwargs["key"] = sys.argv[i + 1]
+        generate_suno_style_prompt(**kwargs)
+
+    elif command == "finance":
+        sub = sys.argv[2] if len(sys.argv) > 2 else "dashboard"
+        if sub == "value":
+            value_catalog()
+        else:
+            d = yield_dashboard()
+            print(json.dumps(d, indent=2))
+
+    elif command == "register":
+        title = sys.argv[2] if len(sys.argv) > 2 else ""
+        if not title:
+            print("Usage: register <title> [--artist ...]")
+            sys.exit(1)
+        kwargs = {"title": title}
+        for i, arg in enumerate(sys.argv[3:], 3):
+            if arg == "--artist" and i + 1 < len(sys.argv): kwargs["artist"] = sys.argv[i + 1]
+            if arg == "--ipi" and i + 1 < len(sys.argv): kwargs["ipi"] = sys.argv[i + 1]
+            if arg == "--isrc" and i + 1 < len(sys.argv): kwargs["isrc"] = sys.argv[i + 1]
+            if arg == "--iswc" and i + 1 < len(sys.argv): kwargs["iswc"] = sys.argv[i + 1]
+        generate_pro_registration(**kwargs)
+
+    elif command == "ascap":
+        from pipeline.sop006_ascap import main as ascap_main
+        ascap_main()
+
+    elif command == "ep":
+        name = sys.argv[2] if len(sys.argv) > 2 else EP["title"]
+        if "--create" in sys.argv:
+            print_ep_workflow(EP, create_dirs=True)
+        elif "--split-sheets" in sys.argv:
+            for s in batch_split_sheets(EP):
+                print(json.dumps(s, indent=2))
+        else:
+            print_ep_workflow(EP)
+
+    elif command == "freelance":
+        subprocess.run([sys.executable, str(OMNI_DIR / "freelance" / "__init__.py"), *sys.argv[2:]])
+
+    else:
+        print(f"Unknown command: {command}")
+        cmd_help()
+        sys.exit(1)
+
+
+if __name__ == "__main__":
+    main()

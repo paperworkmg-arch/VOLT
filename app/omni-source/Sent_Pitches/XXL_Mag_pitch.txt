@@ -1,0 +1,62 @@
+Thinking...
+Okay, I need to help the user create a pitch email for XXL Mag about Mykel [K
+T. Brooks. Let me start by understanding the requirements. The user wants t[1D[K
+the subject line to include "Grammy-Nominated" and the email to be concise,[8D[K
+concise, three paragraphs max, with a clear call to action linking to the A[1D[K
+Afterparty portal. Also, they need to mention the high-res media files avai[4D[K
+available.
+
+First, the target outlet is XXL Mag, which focuses on hip-hop. The PR hook [K
+strategy for music outlets emphasizes his Grammy nomination, the track 'Ton[4D[K
+'Toni Macaroni', and the free studio hour. I should highlight his 15 years [K
+of experience and his initiative to support indie artists. 
+
+The subject line needs to grab attention. Maybe something like "Grammy-Nomi[12D[K
+"Grammy-Nominated Producer Mykel T. Brooks Launches 'The Afterparty' & Offe[4D[K
+Offers Free Studio Time to Indie Artists". That includes the required keywo[5D[K
+keyword and mentions the key points.
+
+In the first paragraph, introduce Mykel, his Grammy nomination, his experie[7D[K
+experience, and the free hour offer. Mention Volt Records' studio quality. [K
+
+
+Second paragraph should focus on 'The Afterparty' and the track 'Toni Macar[5D[K
+Macaroni', linking to the live portal. Highlight the unique aspect of bypas[5D[K
+bypassing streaming apps with the app architecture.
+
+Third paragraph needs to be the call to action, offering the media files an[2D[K
+and urging them to check the portal. Make sure to include the link and ment[4D[K
+mention the high-res files.
+
+Check the rules again: subject line has "Grammy-Nominated", three paragraph[9D[K
+paragraphs, call to action, media files mentioned. Also, format exactly as [K
+specified with OUTLET, CONTACT EMAIL, and the rest. Avoid any markdown, jus[3D[K
+just plain text with the separators. Make sure the tone is professional but[3D[K
+but engaging, fitting for a music authority like XXL.
+...done thinking.
+
+OUTLET: XXL Mag  
+CONTACT EMAIL: xxl@xxlmag.com  
+=========================================  
+SUBJECT: Grammy-Nominated Producer Mykel T. Brooks Launches ‘The Afterparty[10D[K
+Afterparty’ & Offers Free Studio Time to Indie Artists  
+
+Grammy-nominated producer Mykel T. Brooks—15 years immersed in hip-hop/R&B’[12D[K
+hip-hop/R&B’s elite circles—is redefining artist empowerment with **‘The Af[2D[K
+Afterparty’**, his genre-bending project featuring the viral single *“Toni [K
+Macaroni”* (stream live at http://sqtheafterparty.base44.app/). Now, Brooks[6D[K
+Brooks is amplifying his mission by offering **1 FREE HOUR** of elite track[5D[K
+tracking at Volt Records’ analog powerhouse (Neumann/Tube-Tech), giving Atl[3D[K
+Atlanta’s indie acts a rare glimpse into major-label-grade production.  
+
+As a son of a Jamaican pastor and a mentor to rising voices, Brooks’ initia[6D[K
+initiative bridges legacy and innovation. His app-driven platform, *The Aft[3D[K
+Afterparty*, bypasses streaming gatekeepers, while the free studio hour—sec[8D[K
+hour—secured via drive files like *Toni_Macaroni_Master.wav*—proves his com[3D[K
+commitment to elevating grassroots talent. This is more than a track; it’s [K
+a blueprint for the future.  
+
+Secure high-res media files (*Toni_Macaroni_Master.wav* included) and dive [K
+into Brooks’ vision at http://sqtheafterparty.base44.app/. This is your cha[3D[K
+chance to spotlight a Grammy-nominated pioneer reshaping the indie landscap[8D[K
+landscape—**now**.

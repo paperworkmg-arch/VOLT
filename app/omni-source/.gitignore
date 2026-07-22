@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.pytest_cache/
+__pycache__/
+*.pyc
+.DS_Store
+*.log
+/tmp/
+venv/
+.env
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+archive/
+nohup.out

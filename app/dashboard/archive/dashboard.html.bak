@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Omni-Studio Dashboard</title>
+  <link rel="stylesheet" href="/static/css/dashboard.css">
+</head>
+<body>
+  <div class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">
+        <div class="logo-icon">⚡</div>
+        <span>Omni-Studio</span>
+      </div>
+      <nav>
+        <a href="#" class="nav-item active" data-tab="dashboard">⬡ Dashboard</a>
+        <a href="#" class="nav-item" data-tab="tasks">⊞ Tasks</a>
+        <a href="#" class="nav-item" data-tab="swarm">◎ Swarm</a>
+        <a href="#" class="nav-item" data-tab="plugins">◈ Plugins</a>
+        <a href="#" class="nav-item" data-tab="sites">◉ Sites</a>
+        <a href="#" class="nav-item" data-tab="samples">♫ Samples</a>
+        <a href="#" class="nav-item" data-tab="sampler">🎹 Sampler</a>
+        <a href="#" class="nav-item" data-tab="autopilot">🤖 Autopilot</a>
+        <a href="#" class="nav-item" data-tab="chat">💬 Chat</a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="status-dot green" id="sys-status-dot"></div>
+        <span id="sys-status-text">All systems nominal</span>
+        <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">🌓</button>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main">
+      <header class="header">
+        <button class="mobile-menu-btn" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
+        <h1 id="page-title">Dashboard</h1>
+        <div class="header-right">
+          <span class="timestamp" id="sys-timestamp">{{ now }}</span>
+          <button class="btn btn-primary" onclick="refreshAll()">↻ Refresh</button>
+        </div>
+      </header>
+
+      <!-- Dashboard Tab -->
+      <div class="tab-content active" id="tab-dashboard">
+        <!-- Stats Row -->
+        <div class="stats-row">
+          <div class="stat-card">
+            <div class="stat-value" id="stat-agents">{{ agents|length }}</div>
+            <div class="stat-label">Active Agents</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="stat-tasks">{{ tasks|length }}</div>
+            <div class="stat-label">Total Tasks</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="stat-plugins">{{ plugins|length }}</div>
+            <div class="stat-label">Plugins</div>
+          </div>
+          <div class="stat-card accent">
+            <div class="stat-value" id="stat-swarm">—</div>
+            <div class="stat-label">Swarm Runs</div>
+          </div>
+        </div>
+
+        <!-- Agents Grid -->
+        <h2 class="section-title">Agents</h2>
+        <div class="agents-grid">
+          {% for agent in agents %}
+          <div class="agent-card" data-status="{{ agent.status }}">
+            <div class="agent-header">
+              <span class="agent-name">{{ agent.name }}</span>
+              <span class="agent-status {{ agent.status }}">{{ agent.status }}</span>
+            </div>
+            <div class="agent-role">{{ agent.role }}</div>
+            <div class="agent-model">{{ agent.model }}</div>
+            <div class="agent-tasks">Tasks completed: {{ agent.tasks_completed }}</div>
+          </div>
+          {% endfor %}
+        </div>
+
+        <!-- Activity Feed -->
+        <h2 class="section-title">Recent Activity</h2>
+        <div class="activity-feed">
+          {% for item in activity %}
+          <div class="activity-item {{ item.level }}">
+            <span class="activity-time">{{ item.created_at }}</span>
+            <span class="activity-source">[{{ item.source }}]</span>
+            <span class="activity-msg">{{ item.message }}</span>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Tasks Tab -->
+      <div class="tab-content" id="tab-tasks">
+        <div class="toolbar">
+          <form class="inline-form" method="POST" action="/api/tasks">
+            <input type="text" name="name" placeholder="Task name..." required>
+            <select name="type">
+              <option value="manual">Manual</option>
+              <option value="scheduled">Scheduled</option>
+            </select>
+            <select name="agent">
+              <option value="atlas">Atlas</option>
+              <option value="scout">Scout</option>
+              <option value="forge">Forge</option>
+              <option value="pulse">Pulse</option>
+              <option value="echo">Echo</option>
+            </select>
+            <input type="text" name="cron" placeholder="*/15 * * * *">
+            <button type="submit" class="btn btn-primary">+ Add Task</button>
+          </form>
+        </div>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Agent</th>
+              <th>Schedule</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for task in tasks %}
+            <tr>
+              <td>{{ task.name }}</td>
+              <td><span class="badge {{ task.type }}">{{ task.type }}</span></td>
+              <td>{{ task.agent or '—' }}</td>
+              <td><code>{{ task.scheduled_cron or '—' }}</code></td>
+              <td><span class="status-pill {{ task.status }}">{{ task.status }}</span></td>
+              <td class="actions">
+                <button class="btn btn-sm" onclick="runTask({{ task.id }})">▶ Run</button>
+                <button class="btn btn-sm btn-ghost" onclick="toggleTask({{ task.id }})">
+                  {{ 'Disable' if task.enabled else 'Enable' }}
+                </button>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Swarm Tab -->
+      <div class="tab-content" id="tab-swarm">
+        <div class="swarm-panel">
+          <h2>Launch Swarm</h2>
+          <p class="desc">Describe an objective. Atlas decomposes it, dispatches agents in parallel, and synthesizes results.</p>
+          <form id="swarm-form" onsubmit="launchSwarm(event)">
+            <textarea id="swarm-objective" rows="4" placeholder="e.g. Research the top 5 competitors to Volt Records, analyze their pricing, and suggest a differentiation strategy..." required></textarea>
+            <button type="submit" class="btn btn-accent" id="swarm-btn">◎ Launch Swarm</button>
+          </form>
+          <div id="swarm-result" class="swarm-result hidden"></div>
+        </div>
+
+        <h2 class="section-title">Swarm History</h2>
+        <div id="swarm-runs" class="swarm-runs">
+          <p class="muted">No swarm runs yet. Launch one above.</p>
+        </div>
+      </div>
+
+      <!-- Plugins Tab -->
+      <div class="tab-content" id="tab-plugins">
+        <h2 class="section-title">Available Plugins</h2>
+        <div class="plugins-grid">
+          {% for plugin in plugins %}
+          <div class="plugin-card">
+            <div class="plugin-header">
+              <span class="plugin-name">{{ plugin.name }}</span>
+              <span class="plugin-type">{{ plugin.type }}</span>
+            </div>
+            <div class="plugin-config">{{ plugin.config }}</div>
+            <div class="plugin-actions">
+              <button class="btn btn-sm" onclick="runPlugin('{{ plugin.name }}')">▶ Run</button>
+            </div>
+            {% if plugin.last_run %}
+            <div class="plugin-last">Last: {{ plugin.last_run }}</div>
+            {% endif %}
+          </div>
+          {% endfor %}
+        </div>
+        <div id="plugin-result" class="plugin-result hidden"></div>
+      </div>
+
+      <!-- Sites Tab -->
+      <div class="tab-content" id="tab-sites">
+        <div class="toolbar">
+          <form class="inline-form" method="POST" action="/api/sites">
+            <input type="text" name="name" placeholder="Site name..." required>
+            <select name="template">
+              <option value="default">Default</option>
+              <option value="landing">Landing Page</option>
+              <option value="portfolio">Portfolio</option>
+              <option value="store">Store</option>
+            </select>
+            <button type="submit" class="btn btn-primary">+ Create Site</button>
+          </form>
+        </div>
+
+        <div class="sites-grid" id="sites-grid">
+          <p class="muted">No sites yet. Create one above.</p>
+        </div>
+      </div>
+
+      <!-- Sample Library Tab -->
+      <div class="tab-content" id="tab-samples">
+        <!-- Stats Row -->
+        <div class="stats-row">
+          <div class="stat-card">
+            <div class="stat-value" id="sl-total">—</div>
+            <div class="stat-label">Total Samples</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="sl-analyzed">—</div>
+            <div class="stat-label">Analyzed</div>
+          </div>
+          <div class="stat-card accent">
+            <div class="stat-value" id="sl-size">—</div>
+            <div class="stat-label">Total Size</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="sl-tempo">—</div>
+            <div class="stat-label">Avg Tempo</div>
+          </div>
+        </div>
+
+        <!-- Search Controls -->
+        <div class="sl-search-bar">
+          <input type="text" id="sl-search" placeholder="Search samples by name, tag, or note..." oninput="debounceSearch()">
+          <select id="sl-key-filter" onchange="searchSamples()">
+            <option value="">All Keys</option>
+          </select>
+          <select id="sl-type-filter" onchange="searchSamples()">
+            <option value="">All Types</option>
+            <option value="one-shot">One-Shot</option>
+            <option value="loop">Loop</option>
+            <option value="export">Export</option>
+            <option value="full-track">Full Track</option>
+            <option value="drum">Drum</option>
+            <option value="project-sample">Project Sample</option>
+            <option value="unknown">Unknown</option>
+          </select>
+          <input type="number" id="sl-tempo-min" placeholder="Min BPM" min="0" max="300" style="width:80px" oninput="debounceSearch()">
+          <input type="number" id="sl-tempo-max" placeholder="Max BPM" min="0" max="300" style="width:80px" oninput="debounceSearch()">
+          <button class="btn btn-primary" onclick="searchSamples()">🔍 Search</button>
+          <button class="btn btn-accent" onclick="startScan()">⟳ Scan</button>
+          <button class="btn btn-sm btn-ghost" onclick="startAnalyze()">🧪 Analyze</button>
+        </div>
+
+        <!-- Results -->
+        <div class="sl-results-header" id="sl-results-header">
+          <span id="sl-count">0 samples</span>
+          <div class="sl-results-info">
+            <span id="sl-page-info"></span>
+            <button class="btn btn-sm btn-ghost" onclick="prevPage()">← Prev</button>
+            <button class="btn btn-sm btn-ghost" onclick="nextPage()">Next →</button>
+          </div>
+        </div>
+
+        <div class="sl-table-wrap">
+          <table class="data-table" id="sl-table">
+            <thead>
+              <tr>
+                <th>ID / Name</th>
+                <th>Key</th>
+                <th>Tempo</th>
+                <th>Type</th>
+                <th>Duration</th>
+                <th>Size</th>
+                <th>Source</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="sl-body"></tbody>
+          </table>
+        </div>
+
+        <div class="sl-empty hidden" id="sl-empty">
+          <p>No samples found. Click <strong>⟳ Scan</strong> to discover audio files on your system.</p>
+        </div>
+      </div>
+
+      <!-- Sampler Tab -->
+      <div class="tab-content" id="tab-sampler">
+        <div class="toolbar">
+          <form class="inline-form" onsubmit="createKit(event)">
+            <input type="text" id="kit-name" placeholder="Kit name..." required>
+            <input type="text" id="kit-desc" placeholder="Description...">
+            <select id="kit-layout">
+              <option value="drum">Drum Kit (GM mapping)</option>
+              <option value="chromatic">Chromatic / Melodic</option>
+            </select>
+            <input type="text" id="kit-samples" placeholder="Sample IDs (comma-separated)" required>
+            <button type="submit" class="btn btn-primary">+ Create Kit</button>
+          </form>
+        </div>
+
+        <div class="sampler-tip muted">
+          Tip: Search samples on the ♫ Samples tab, note their IDs, then paste them above to build a DAW-ready kit.
+        </div>
+
+        <h2 class="section-title">My Kits</h2>
+        <div class="kits-grid" id="kits-grid">
+          <p class="muted">No kits yet. Create one above.</p>
+        </div>
+        <div id="kit-result" class="plugin-result hidden"></div>
+      </div>
+
+      <!-- Autopilot Tab -->
+      <div class="tab-content" id="tab-autopilot">
+        <div class="autopilot-header">
+          <div class="autopilot-status">
+            <div class="status-dot" id="autopilot-dot"></div>
+            <span id="autopilot-state">Loading...</span>
+          </div>
+          <div class="autopilot-actions">
+            <button class="btn btn-primary" onclick="startAutopilot()">▶ Start</button>
+            <button class="btn btn-ghost" onclick="stopAutopilot()">⏹ Stop</button>
+            <button class="btn btn-accent" onclick="runAutopilotCycle()">⚡ Run All Now</button>
+          </div>
+        </div>
+
+        <h2 class="section-title">Autonomous Jobs</h2>
+        <div class="autopilot-jobs" id="autopilot-jobs">
+          <p class="muted">Loading jobs...</p>
+        </div>
+
+        <h2 class="section-title">Recent Runs</h2>
+        <div class="autopilot-runs" id="autopilot-runs">
+          <p class="muted">No runs yet.</p>
+        </div>
+      </div>
+
+      <!-- Chat Tab -->
+      <div class="tab-content" id="tab-chat">
+        <div class="chat-panel">
+          <div class="chat-messages" id="chat-messages">
+            <div class="chat-msg system">Omni-Studio AI ready. Select a provider and start chatting.</div>
+          </div>
+          <form class="chat-input" onsubmit="sendChat(event)">
+            <select id="chat-provider">
+              <option value="kimi">Kimi</option>
+              <option value="openrouter">OpenRouter</option>
+              <option value="xai">xAI</option>
+              <option value="ollama">Ollama</option>
+              <option value="google">Google</option>
+            </select>
+            <input type="text" id="chat-message" placeholder="Ask anything..." required>
+            <button type="submit" class="btn btn-primary">Send</button>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="/static/js/dashboard.js"></script>
+</body>
+</html>

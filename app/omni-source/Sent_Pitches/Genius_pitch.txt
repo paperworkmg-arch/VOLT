@@ -1,0 +1,67 @@
+Thinking...
+Okay, I need to help the user by creating a pitch email for Genius, focusin[7D[K
+focusing on Mykel T. Brooks. Let's start by understanding the requirements.[13D[K
+requirements. The target is Genius, which is a music/lyrics outlet, so the [K
+focus should be on his lyricism, songwriting credits, and the story behind [K
+'Toni Macaroni'. 
+
+First, the subject line needs to include 'Grammy-Nominated'. Maybe somethin[8D[K
+something catchy that highlights both his credentials and the track. Then, [K
+the body should be three paragraphs with a clear call to action linking to [K
+the Afterparty portal. Also, mention the high-res media files and the free [K
+studio hour initiative.
+
+I should start with a strong hook in the subject line. Maybe "Grammy-Nomina[14D[K
+"Grammy-Nominated Producer Mykel T. Brooks Unveils 'Toni Macaroni' – A Lyri[4D[K
+Lyricist's Masterpiece and a Movement for Indie Artists". That includes the[3D[K
+the Grammy nod, the track, and hints at the initiative.
+
+In the first paragraph, introduce Mykel, his Grammy nomination, and the tra[3D[K
+track. Highlight the lyrics and songwriting. Mention the success of 'Toni M[1D[K
+Macaroni' and the live portal. 
+
+Second paragraph should tie in the free studio hour at Volt Records, showin[6D[K
+showing his commitment to indie artists. Connect his background as a son of[2D[K
+of a Jamaican pastor to his community efforts. 
+
+Third paragraph needs the call to action, linking to the Afterparty portal [K
+and offering the media files. Make sure to explicitly state that the master[6D[K
+master track and high-res files are available. 
+
+Check the rules again: subject line has 'Grammy-Nominated', three paragraph[9D[K
+paragraphs, CTA with the link, and mention the media files. Avoid any markd[5D[K
+markdown, just plain text. Also, ensure the contact email is correct (edito[6D[K
+(editorial@genius.com). 
+
+Let me structure each part step by step, ensuring all key points are covere[6D[K
+covered without exceeding three paragraphs. Make sure the tone is professio[9D[K
+professional yet engaging, suitable for a music outlet like Genius.
+...done thinking.
+
+OUTLET: Genius  
+CONTACT EMAIL: editorial@genius.com  
+=========================================  
+SUBJECT: Grammy-Nominated Producer Mykel T. Brooks Unveils 'Toni Macaroni' [K
+– A Lyricist's Masterpiece and a Movement for Indie Artists  
+
+Grammy-nominated producer and songwriter Mykel T. Brooks, known for his raz[3D[K
+razor-sharp lyricism and genre-defying storytelling, delivers a genre-bendi[11D[K
+genre-bending anthem with **"Toni Macaroni"**—a track that marries sharp wo[2D[K
+wordplay, soulful R&B hooks, and a narrative steeped in Atlanta’s vibrant c[1D[K
+culture. The song, now live at [http://sqtheafterparty.base44.app/](http://[44D[K
+[http://sqtheafterparty.base44.app/](http://sqtheafterparty.base44.app/), s[1D[K
+showcases Brooks’ ability to craft radio-ready hits while pushing creative [K
+boundaries, with lyrics that dissect fame, identity, and resilience.  
+
+Beyond the music, Brooks is fueling a grassroots revolution: offering **1 f[1D[K
+free hour of elite studio tracking** at Volt Records (Atlanta’s premier ana[3D[K
+analog studio) to independent artists. A son of a Jamaican pastor, Brooks c[1D[K
+channels his roots into a mission to democratize access to major-label-grad[16D[K
+major-label-grade production, proving that talent and vision can thrive out[3D[K
+outside the system.  
+
+Ready to dive deeper? We’re sending **Toni_Macaroni_Master.wav** and high-r[6D[K
+high-res media files immediately. Visit [http://sqtheafterparty.base44.app/[35D[K
+[http://sqtheafterparty.base44.app/](http://sqtheafterparty.base44.app/) to[2D[K
+to explore the track, experience Brooks’ vision, and join the movement rede[4D[K
+redefining music’s future.

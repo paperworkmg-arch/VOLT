@@ -1,0 +1,60 @@
+Thinking...
+Okay, let's tackle this query. The user wants a pitch for Mykel T. Brooks t[1D[K
+to National_Urban_Syndicate_Node_105. First, I need to make sure I follow a[1D[K
+all the rules. The subject line must include "Grammy-Nominated," so that's [K
+a given. The email should be three paragraphs max, with a clear call to act[3D[K
+action linking to the Afterparty portal. Also, mention the high-res media f[1D[K
+files ready to send.
+
+Looking at the PR hook strategy for Radio/Music: highlight Grammy nominatio[9D[K
+nomination, 'Toni Macaroni,' and the free studio hour. The target outlet is[2D[K
+is urban/syndicated, so focusing on the music aspect makes sense here. Need[4D[K
+Need to mention the Grammy award, the track, and the initiative. Also, incl[4D[K
+include the link and the media files.
+
+Check the founder context: Mykel is a Grammy-nominated producer with 15+ ye[2D[K
+years in hip-hop/R&B. His initiative is giving free studio time at Volt Rec[3D[K
+Records. The flagship project is The Afterparty with 'Toni Macaroni.' The s[1D[K
+studio uses premium analog equipment. Also, the local assets include the ma[2D[K
+master wav file.
+
+Make sure the subject line is catchy. Maybe something like "Grammy-Nominate[16D[K
+"Grammy-Nominated Producer Mykel T. Brooks Launches 'The Afterparty' & Offe[4D[K
+Offers Free Studio Time to Indie Artists." Then in the body, start with the[3D[K
+the hook, mention the track, the free hour, and the studio quality. Second [K
+paragraph can talk about the app architecture and community focus. Third pa[2D[K
+paragraph is the call to action and media availability.
+
+Wait, the rules say three paragraphs. Let me structure each paragraph. Firs[4D[K
+First intro with Grammy, track, and initiative. Second about the app and co[2D[K
+community. Third call to action and media. Also, include the link in the su[2D[K
+subject and body. Make sure to explicitly state that the master wav and hig[3D[K
+high-res files are ready. Check the contact email is correct. Avoid markdow[7D[K
+markdown, just plain text with the specified format. Alright, that should c[1D[K
+cover it.
+...done thinking.
+
+OUTLET: National_Urban_Syndicate_Node_105  
+CONTACT EMAIL: syndicate_submissions_105@media-net-usa.org  
+=========================================  
+SUBJECT: Grammy-Nominated Producer Mykel T. Brooks Launches ‘The Afterparty[10D[K
+Afterparty’ & Offers Free Studio Time to Indie Artists  
+
+Grammy-nominated producer Mykel T. Brooks is redefining music creation with[4D[K
+with his groundbreaking platform **‘The Afterparty’**, featuring the viral [K
+single *“Toni Macaroni”* (live portal: http://sqtheafterparty.base44.app/).[36D[K
+http://sqtheafterparty.base44.app/). Now, Brooks is amplifying his mission [K
+by offering **1 free hour of elite studio tracking** at Volt Records—Atlant[14D[K
+Records—Atlanta’s premier analog studio—to independent artists, proving maj[3D[K
+major-label quality is within reach for grassroots creators.  
+
+Backed by 15+ years in hip-hop/R&B and a Jamaican-rooted drive for equity, [K
+Brooks’ initiative merges cutting-edge app architecture with community empo[4D[K
+empowerment. His app bypasses streaming gatekeepers, giving artists direct [K
+access to master-quality sessions and ownership of their sound. This is mor[3D[K
+more than a track—it’s a movement.  
+
+Ready to elevate your sound? High-res media, including the *Toni_Macaroni_M[16D[K
+*Toni_Macaroni_Master.wav*, are available for immediate distribution. Visit[5D[K
+Visit http://sqtheafterparty.base44.app/ to experience the future of music [K
+creation—and claim your free hour today.

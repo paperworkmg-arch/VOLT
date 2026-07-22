@@ -1,0 +1,76 @@
+Thinking...
+Okay, I need to create a pitch email for National_Urban_Syndicate_Node_95 b[1D[K
+based on the provided information. Let me start by reviewing the user's que[3D[K
+query and the context given.
+
+First, the target outlet is a national urban syndicate, so the focus should[6D[K
+should be on the music aspect. The PR hook strategy mentions highlighting G[1D[K
+Grammy nomination, the track 'Toni Macaroni', and the free studio hour for [K
+indie artists. The subject line must include 'Grammy-Nominated'.
+
+The user wants the email to have a subject line with the hook title, three [K
+paragraphs max, a clear call to action linking to the live portal, and ment[4D[K
+mention that the master file and media are ready. Also, the format needs to[2D[K
+to be exactly as specified with the outlet and contact email.
+
+Let me structure the subject line. Maybe something like "Grammy-Nominated P[1D[K
+Producer Mykel T. Brooks Launches 'The Afterparty' & Offers Free Studio Tim[3D[K
+Time to Indie Artists". That includes the required keyword and highlights t[1D[K
+the key points.
+
+For the first paragraph, introduce Mykel, his Grammy nomination, the track [K
+'Toni Macaroni', and the initiative. Mention the free hour at Volt Records.[8D[K
+Records. Second paragraph can talk about the impact on the local indie scen[4D[K
+scene and the quality of the studio. Third paragraph should be the call to [K
+action, linking to the portal and offering media files.
+
+Check the rules again: three paragraphs, subject line with Grammy-Nominated[16D[K
+Grammy-Nominated, link provided, media files mentioned. Also ensure the con[3D[K
+contact info is correct. The contact email is syndicate_submissions_95@medi[29D[K
+syndicate_submissions_95@media-net-usa.org.
+
+Need to make sure the tone is engaging and persuasive, suitable for a radio[5D[K
+radio outlet. Avoid jargon but highlight the unique aspects: Grammy cred, t[1D[K
+the free studio time, the app bypassing streaming services. Maybe in the se[2D[K
+second paragraph, mention the app architecture as per the business/tech ang[3D[K
+angle, but since the outlet is urban/radio, focus more on the music and ini[3D[K
+initiative.
+
+Wait, the PR hook strategy says for Radio/Music: highlight Grammy, track, a[1D[K
+and free hour. So the first paragraph should cover that. The second could e[1D[K
+elaborate on the studio's credentials and the impact. Third is CTA and medi[4D[K
+media availability.
+
+Also, ensure that the link is included as http://sqtheafterparty.base44.app[33D[K
+http://sqtheafterparty.base44.app/ and that the master file is mentioned ex[2D[K
+explicitly. Need to check for any typos and that all required elements are [K
+present.
+...done thinking.
+
+OUTLET: National_Urban_Syndicate_Node_95  
+CONTACT EMAIL: syndicate_submissions_95@media-net-usa.org  
+=========================================  
+SUBJECT: Grammy-Nominated Producer Mykel T. Brooks Launches ‘The Afterparty[10D[K
+Afterparty’ & Offers Free Studio Time to Indie Artists  
+
+Grammy-nominated producer Mykel T. Brooks is revolutionizing the music indu[4D[K
+industry with his genre-defying project *The Afterparty*, featuring the vir[3D[K
+viral single **“Toni Macaroni”** (stream live at http://sqtheafterparty.bas[26D[K
+http://sqtheafterparty.base44.app/). Known for crafting hits across hip-hop[7D[K
+hip-hop and R&B, Brooks is now giving Atlanta’s independent artists a rare [K
+opportunity: **1 free hour of elite studio tracking** at Volt Records, home[4D[K
+home to premium analog gear like Neumann and Tube-Tech. This initiative bri[3D[K
+bridges the gap between indie creators and major-label production quality, [K
+empowering local talent to experience world-class sound engineering.  
+
+Backed by 15+ years in the industry and a Jamaican-rooted drive for communi[7D[K
+community uplift, Brooks’ app architecture for *The Afterparty* bypasses tr[2D[K
+traditional streaming models, directly connecting fans to artists. The proj[4D[K
+project’s master track, **Toni_Macaroni_Master.wav**, is now available for [K
+immediate broadcast, offering a crisp, high-res sample of Brooks’ signature[9D[K
+signature sonic excellence.  
+
+Visit http://sqtheafterparty.base44.app/ to explore the live portal, and re[2D[K
+reach out for high-res media files and press assets. This is your chance to[2D[K
+to spotlight a Grammy-nominated visionary reshaping the future of music—**a[9D[K
+music—**and** giving back to the heart of Atlanta’s indie scene.

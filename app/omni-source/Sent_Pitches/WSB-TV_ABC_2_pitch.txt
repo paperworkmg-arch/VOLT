@@ -1,0 +1,80 @@
+Thinking...
+Okay, let's tackle this query. The user wants me to act as a master publici[7D[K
+publicist pitching a story on Mykel T. Brooks to WSB-TV. First, I need to m[1D[K
+make sure I understand all the details provided.
+
+Mykel is a Grammy-nominated producer with a platform called The Afterparty,[11D[K
+Afterparty, featuring the track 'Toni Macaroni'. He's offering free studio [K
+time to independent artists at Volt Records. The target outlet is WSB-TV, a[1D[K
+an ABC affiliate. The PR hook strategy has different angles depending on th[2D[K
+the outlet's focus, but since it's TV, maybe a mix of both music and busine[6D[K
+business aspects?
+
+The rules specify that the subject line must include 'Grammy-Nominated', ke[2D[K
+keep it to three paragraphs, include a clear call to action linking to the [K
+live portal, and mention the high-res media files. Also, the format needs t[1D[K
+to be exact with the outlet, contact email, and the structure provided.
+
+First, the subject line. It needs to grab attention. Maybe something like "[1D[K
+"Grammy-Nominated Producer Mykel T. Brooks Revolutionizes Music Industry wi[2D[K
+with Free Studio Time Initiative & Hit Single 'Toni Macaroni'". That includ[6D[K
+includes the required term and highlights both the free hour and the track.[6D[K
+track.
+
+Next, the body. Start with a strong opening about Mykel's initiative and th[2D[K
+the free hour. Mention his Grammy nomination and the impact on Atlanta arti[4D[K
+artists. Then, link to The Afterparty and the track. Finally, mention the m[1D[K
+media assets available. Need to ensure each paragraph is concise, and the c[1D[K
+call to action is clear. Also, check that all required elements are include[7D[K
+included: the link, media files, and the hook points from the strategy.
+
+Wait, the user mentioned if it's business/tech/culture, focus on the app ar[2D[K
+architecture and his Jamaican background. Since WSB is a TV outlet, maybe a[1D[K
+a blend of both music and the tech aspect. But the example response given b[1D[K
+by the user in the rules didn't include the tech part. Maybe the user wants[5D[K
+wants to emphasize the free hour and the track more for a TV audience. Let [K
+me check the PR hook strategy again.
+
+For Radio/Music: highlight Grammy, track, free hour. For Business/Tech/Cult[18D[K
+Business/Tech/Culture: app architecture, Jamaican resilience, ownership. Si[2D[K
+Since WSB is TV, maybe a mix. But the example response from the user in the[3D[K
+the rules didn't mention the app part. Maybe the user wants to stick to the[3D[K
+the music angle here. Let me check the example given in the rules. The samp[4D[K
+sample response didn't mention the app, so perhaps for TV, focusing on the [K
+music and the initiative is better.
+
+Also, need to make sure to include the link to the live portal and mention [K
+the high-res files. The example response from the user includes "Explicitly[11D[K
+"Explicitly state that Toni_Macaroni_Master.wav and high-res media files ar[2D[K
+are ready to send." So that needs to be in the third paragraph.
+
+Check the structure again: Outlet, contact email, then the subject and body[4D[K
+body. Three paragraphs max. Let me draft that now, ensuring all points are [K
+covered.
+...done thinking.
+
+OUTLET: WSB-TV (ABC 2)  
+CONTACT EMAIL: newstips@wsbtv.com  
+=========================================  
+SUBJECT: Grammy-Nominated Producer Mykel T. Brooks Offers Free Studio Time [K
+to Atlanta Indie Artists, Launches 'The Afterparty'  
+
+Grammy-nominated producer Mykel T. Brooks is redefining artist empowerment [K
+with his bold initiative: offering **1 free hour of elite studio tracking**[10D[K
+tracking** at Volt Records to independent Atlanta creators. Using premium a[1D[K
+analog chains from Neumann and Tube-Tech, Brooks aims to bridge the gap bet[3D[K
+between indie artists and major-label quality, proving that world-class pro[3D[K
+production is within reach.  
+
+His flagship project, *The Afterparty*—featuring the viral hit **“Toni Maca[4D[K
+Macaroni”** (live portal: [http://sqtheafterparty.base44.app/](http://sqthe[49D[K
+[http://sqtheafterparty.base44.app/](http://sqtheafterparty.base44.app/))—e[http://sqtheafterparty.base44.app/](http://sqthefterparty.base44.app/))—exemplifies his mission to elevate local talent. Brooks, a 15-year veteran of[2D[K
+of hip-hop/R&B and son of a Jamaican pastor, is leveraging his Grammy pedig[5D[K
+pedigree to build a community-driven platform that bypasses traditional ind[3D[K
+industry barriers.  
+
+High-res media, including the master of **“Toni Macaroni”** (*Toni_Macaroni[15D[K
+(*Toni_Macaroni_Master.wav*), is available for immediate use. Visit [http:/[7D[K
+[http://sqtheafterparty.base44.app/](http://sqtheafterparty.base44.app/) to[2D[K
+to explore the project and learn how artists can claim their free studio ho[2D[K
+hour.

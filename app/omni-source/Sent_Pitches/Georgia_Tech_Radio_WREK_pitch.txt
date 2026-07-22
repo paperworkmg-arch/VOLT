@@ -1,0 +1,72 @@
+Thinking...
+Okay, I need to create a pitch email for Georgia Tech Radio (WREK) about My[2D[K
+Mykel T. Brooks and his initiative. Let me start by recalling the key point[5D[K
+points from the user's query. 
+
+First, the subject line must include "Grammy-Nominated". The target outlet [K
+is a student-run radio station, so the hook should appeal to their audience[8D[K
+audience, probably music-focused students. The PR hook strategy says to hig[3D[K
+highlight his Grammy nomination, the track 'Toni Macaroni', and the free st[2D[K
+studio hour for Atlanta indie artists.
+
+I need to make sure the email is concise, three paragraphs max. Also, inclu[5D[K
+include a clear call to action linking to the live portal. Mention that hig[3D[K
+high-res media files like Toni_Macaroni_Master.wav are available. 
+
+Let me structure the subject line. Maybe something like "Grammy-Nominated P[1D[K
+Producer Mykel T. Brooks Offers Free Studio Time to Atlanta Indie Artists v[1D[K
+via 'The Afterparty'". That includes the required term and highlights the k[1D[K
+key points.
+
+For the first paragraph, introduce Mykel, his credentials, and the initiati[8D[K
+initiative. Mention Grammy nomination, his experience, and the free hour at[2D[K
+at Volt Records. 
+
+Second paragraph should focus on 'The Afterparty' and the track 'Toni Macar[5D[K
+Macaroni', linking to the live portal. Maybe mention the app architecture a[1D[K
+aspect since it's a student-run radio station, showing innovation.
+
+Third paragraph needs to be the call to action, offering media files and en[2D[K
+encouraging them to check the link. Also, mention the availability of the m[1D[K
+master track and other files.
+
+Check the rules again: subject line has "Grammy-Nominated", three paragraph[9D[K
+paragraphs, call to action with the link, and explicit mention of the media[5D[K
+media files. Avoid markdown, just plain text with the specified format.
+
+Make sure the tone is engaging and suitable for a student audience. Highlig[7D[K
+Highlight the unique aspects like the free studio time and the app bypassin[8D[K
+bypassing streaming services. Maybe touch on the Jamaican heritage as a poi[3D[K
+point of resilience and community focus.
+
+Double-check the contact email is correct (contact@wrek.org) and the outlet[6D[K
+outlet name. Ensure the link is properly included. Alright, time to put it [K
+all together following the example format.
+...done thinking.
+
+OUTLET: Georgia Tech Radio (WREK)  
+CONTACT EMAIL: contact@wrek.org  
+=========================================  
+SUBJECT: Grammy-Nominated Producer Mykel T. Brooks Offers Free Studio Time [K
+to Atlanta Indie Artists via 'The Afterparty'  
+
+Grammy-nominated producer Mykel T. Brooks—son of a Jamaican pastor and 15-y[4D[K
+15-year veteran of hip-hop/R&B—is revolutionizing the music industry with h[1D[K
+his platform *The Afterparty*, featuring the viral single “Toni Macaroni” ([1D[K
+(stream live at http://sqtheafterparty.base44.app/). Now, Brooks is giving [K
+back to Atlanta’s indie scene by offering **1 free hour of elite studio tra[3D[K
+tracking** at Volt Records, using premium analog chains (Neumann/Tube-Tech)[19D[K
+(Neumann/Tube-Tech) to empower emerging artists with major-label mastering [K
+quality.  
+
+As a visionary who bypassed traditional streaming models to build *The Afte[4D[K
+Afterparty*’s immersive app architecture, Brooks is redefining ownership an[2D[K
+and access for creators. His hit single “Toni Macaroni” — available in high[4D[K
+high-res at http://sqtheafterparty.base44.app/ — exemplifies the sonic exce[4D[K
+excellence now within reach for independent artists through this bold initi[5D[K
+initiative.  
+
+Ready to amplify the next generation of talent? High-res media, including *[1D[K
+*Toni_Macaroni_Master.wav*, are available for immediate distribution. Visit[5D[K
+Visit http://sqtheafterparty.base44.app/ to explore the platform and learn [K
+how to claim your free studio hour. Let’s make waves together.

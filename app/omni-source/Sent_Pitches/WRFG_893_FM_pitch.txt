@@ -1,0 +1,63 @@
+Thinking...
+Okay, I need to create a pitch email for WRFG 89.3 FM about Mykel T. Brooks[6D[K
+Brooks and his initiatives. Let me start by recalling the user's instructio[10D[K
+instructions. The subject line must include "Grammy-Nominated," and the ema[3D[K
+email should be three paragraphs with a clear call to action linking to the[3D[K
+the Afterparty portal. Also, I need to mention the availability of the high[4D[K
+high-res media files.
+
+First, the outlet is WRFG, so the contact email is wrfg@wrfg.org. The subje[5D[K
+subject line should be catchy. Maybe something like "Grammy-Nominated Produ[5D[K
+Producer Mykel T. Brooks Offers Free Studio Time to Atlanta Indie Artists v[1D[K
+via 'The Afterparty'." That includes the required term and highlights the k[1D[K
+key points.
+
+In the first paragraph, I should introduce Mykel, his Grammy nomination, an[2D[K
+and the free hour offer. Mention Volt Records' studio quality and the impac[5D[K
+impact on the local indie scene. Include the link to the Afterparty portal.[7D[K
+portal.
+
+Second paragraph: Focus on 'Toni Macaroni' and the live portal. Highlight t[1D[K
+the track's success and how it's part of The Afterparty. Maybe mention the [K
+Jamaican heritage and resilience as a hook for community radio.
+
+Third paragraph: Call to action for the radio station to feature the track [K
+and the initiative. Offer to send the high-res files and mention the availa[6D[K
+availability of the master track. Ensure the link is included again.
+
+Check if all rules are met: subject line has "Grammy-Nominated," three para[4D[K
+paragraphs, call to action with the link, and mention of media files. Avoid[5D[K
+Avoid any markdown, just plain text. Make sure the tone is engaging and fit[3D[K
+fits a community radio audience.
+...done thinking.
+
+OUTLET: WRFG 89.3 FM  
+CONTACT EMAIL: wrfg@wrfg.org  
+=========================================  
+SUBJECT: Grammy-Nominated Producer Mykel T. Brooks Offers Free Studio Time [K
+to Atlanta Indie Artists via 'The Afterparty'  
+
+Grammy-nominated producer Mykel T. Brooks is revolutionizing the music indu[4D[K
+industry with his platform **The Afterparty**, a live immersive experience [K
+that blends cutting-edge audio tech with the soul of hip-hop/R&B. Now, Broo[4D[K
+Brooks is giving back to Atlanta’s indie scene by offering **1 free hour of[2D[K
+of elite studio tracking** at Volt Records—featuring Neumann and Tube-Tech [K
+analog chains—to independent artists, proving major-label quality is within[6D[K
+within reach. This initiative, rooted in his Jamaican heritage and 15+ year[4D[K
+years in the industry, empowers local creators to elevate their sound witho[5D[K
+without compromise.  
+
+The Afterparty’s flagship track, **“Toni Macaroni”** (stream live at [http:[6D[K
+[http://sqtheafterparty.base44.app/](http://sqtheafterparty.base44.app/)), [K
+has already captivated audiences with its bold production and community-dri[13D[K
+community-driven energy. Brooks’ app architecture bypasses traditional stre[4D[K
+streaming models, directly connecting artists to fans—a testament to his mi[2D[K
+mission of reclaiming creative ownership. WRFG listeners can experience thi[3D[K
+this innovation firsthand and explore how Brooks is bridging gaps between i[1D[K
+indie talent and industry standards.  
+
+Ready to amplify this movement? We’re happy to send **Toni_Macaroni_Master.[23D[K
+**Toni_Macaroni_Master.wav** and high-res media files for broadcast. Visit [K
+[http://sqtheafterparty.base44.app/](http://sqtheafterparty.base44.app/) to[2D[K
+to dive deeper into Brooks’ vision and join the conversation. Let’s make wa[2D[K
+waves together.

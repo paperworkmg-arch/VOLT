@@ -1,0 +1,10 @@
+{
+  "title": "Omni Studio",
+  "description": "Unified audio production dashboard for Volt Records - integrates StableDAW, Stable Audio 3, TASCAR, and catalog intelligence into a single command center.",
+  "icon": "icon.png",
+  "version": "1.0.0",
+  "author": "Volt Records",
+  "links": {
+    "github": "https://github.com/VoltRecords/omni-studio"
+  }
+}

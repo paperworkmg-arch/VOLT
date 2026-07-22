@@ -1,0 +1,18 @@
+{
+  "targets": [
+    {
+      "name": "Jane Doe",
+      "title": "A&R Manager",
+      "sub_library": "KPM",
+      "linkedin_url": "https://linkedin.com/in/jane-doe-kpm",
+      "confidence": 0.95
+    },
+    {
+      "name": "Alice Johnson",
+      "title": "Catalog Manager",
+      "sub_library": "FirstCom",
+      "linkedin_url": "https://linkedin.com/in/alice-johnson-firstcom",
+      "confidence": 0.88
+    }
+  ]
+}

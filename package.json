@@ -1,0 +1,27 @@
+{
+  "name": "omni-studio",
+  "version": "1.0.0",
+  "description": "Unified audio AI studio — StableDAW + Stable Audio 3 + TASCAR + Catalog Intelligence",
+  "main": "pinokio.js",
+  "scripts": {
+    "start": "node start.js",
+    "install-app": "node install.js",
+    "update": "node update.js",
+    "reset": "node reset.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/paperworkmg-arch/omni-studio.git"
+  },
+  "author": "Volt Records",
+  "license": "MIT",
+  "keywords": [
+    "pinokio",
+    "audio",
+    "stable-audio-3",
+    "stabledaw",
+    "tascar",
+    "ai",
+    "music-generation"
+  ]
+}

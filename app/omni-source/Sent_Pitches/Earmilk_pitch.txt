@@ -1,0 +1,64 @@
+Thinking...
+Okay, I need to help the user create a pitch email for Earmilk targeting My[2D[K
+Mykel T. Brooks. Let's start by understanding the requirements. The subject[7D[K
+subject line must include "Grammy-Nominated," and the email should be three[5D[K
+three paragraphs with a clear call to action linking to the Afterparty port[4D[K
+portal. Also, mention the high-res media files.
+
+First, the hook title. It needs to grab attention. Maybe something like "Gr[3D[K
+"Grammy-Nominated Producer Mykel T. Brooks Offers Free Elite Studio Time to[2D[K
+to Indie Artists via 'The Afterparty'." That includes the key points: Gramm[5D[K
+Grammy, free studio time, and the project name.
+
+Next, the body. The first paragraph should introduce Mykel, his credentials[11D[K
+credentials, and the initiative. Mention his Grammy nomination, his experie[7D[K
+experience, and the free hour at Volt Records. Highlight the track 'Toni Ma[2D[K
+Macaroni' and the link.
+
+Second paragraph: Focus on the unique aspects. Since Earmilk is interested [K
+in pristine vocal mix quality, emphasize the studio equipment (Neumann/Tube[13D[K
+(Neumann/Tube-Tech) and the live portal. Also, connect his Jamaican backgro[7D[K
+background to his resilience and community focus.
+
+Third paragraph: Call to action. Encourage them to check the Afterparty por[3D[K
+portal, mention the availability of the master track and media files. Make [K
+it clear they can request the files.
+
+Check the rules again: subject line has "Grammy-Nominated," three paragraph[9D[K
+paragraphs, link included, media files mentioned. Make sure the contact ema[3D[K
+email is correct (tracks@earmilk.com). Avoid any markdown, just plain text [K
+with the specified format.
+
+Double-check the links and file names. Make sure the tone is professional b[1D[K
+but engaging, highlighting both the opportunity for indie artists and the q[1D[K
+quality of the music. Align with Earmilk's interest in dance/hip-hop crosso[6D[K
+crossover and vocal mix quality. Okay, that should cover it.
+...done thinking.
+
+OUTLET: Earmilk  
+CONTACT EMAIL: tracks@earmilk.com  
+=========================================  
+SUBJECT: Grammy-Nominated Producer Mykel T. Brooks Offers Free Elite Studio[6D[K
+Studio Time to Indie Artists via ‘The Afterparty’  
+
+Grammy-nominated producer Mykel T. Brooks—son of a Jamaican pastor and 15-y[4D[K
+15-year veteran of hip-hop/R&B—is revolutionizing the music industry with h[1D[K
+his platform *The Afterparty*, featuring the viral single “Toni Macaroni” ([1D[K
+(live portal: http://sqtheafterparty.base44.app/). Now, Brooks is giving ba[2D[K
+back to Atlanta’s indie scene by offering **1 free hour of world-class trac[4D[K
+tracking** at Volt Records, home to premium analog chains like Neumann and [K
+Tube-Tech. This initiative empowers independent artists to experience major[5D[K
+major-label-grade production, proving that elite sound quality is within re[2D[K
+reach.  
+
+Beyond the studio, Brooks’ app architecture for *The Afterparty* bypasses t[1D[K
+traditional streaming models, reflecting his Jamaican-bred resilience and c[1D[K
+commitment to community ownership. The project’s flagship track, “Toni Maca[4D[K
+Macaroni,” showcases pristine vocal mix quality—perfect for Earmilk’s audie[5D[K
+audience—while the free hour initiative underscores Brooks’ mission to demo[4D[K
+democratize access to top-tier resources.  
+
+Visit http://sqtheafterparty.base44.app/ to explore the project, and reques[6D[K
+request high-res media files including *Toni_Macaroni_Master.wav* for immed[5D[K
+immediate playback. This is a rare chance to spotlight a Grammy-nominated v[1D[K
+visionary reshaping both music and industry access.

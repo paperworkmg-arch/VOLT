@@ -1,0 +1,59 @@
+Thinking...
+Okay, let's tackle this query. The user wants me to act as a master publici[7D[K
+publicist pitching a story on Mykel T. Brooks to Bally Sports South & South[5D[K
+Southeast. First, I need to understand the key points from the provided con[3D[K
+context.
+
+Mykel is a Grammy-nominated producer with a platform called The Afterparty,[11D[K
+Afterparty, featuring the track 'Toni Macaroni'. He's offering free studio [K
+time to independent artists at Volt Records. The target outlet is a regiona[7D[K
+regional sports network, so the hook needs to align with their focus. 
+
+The PR hook strategy says if it's radio/music, highlight Grammy nomination,[11D[K
+nomination, the track, and the free studio hour. Since Bally Sports is a re[2D[K
+regional sports network, maybe they have a music or culture segment. But th[2D[K
+the user also mentioned if it's business/tech/culture, focus on the app arc[3D[K
+architecture and community ownership. However, the outlet is a sports netwo[5D[K
+network, so maybe the music angle is better here.
+
+The rules state the subject line must include 'Grammy-Nominated', max 3 par[3D[K
+paragraphs, a clear CTA to the live portal, and mention the high-res media [K
+files. 
+
+I need to structure the email correctly. The subject line should grab atten[5D[K
+attention. Maybe something like "Grammy-Nominated Producer Mykel T. Brooks [K
+Launches 'The Afterparty' & Offers Free Studio Time to Atlanta Indie Artist[6D[K
+Artists". 
+
+In the body, first paragraph introduces Mykel, his credentials, and the ini[3D[K
+initiative. Second paragraph connects to the track and the app. Third parag[5D[K
+paragraph mentions the media files available and the CTA. Need to ensure al[2D[K
+all required elements are included: Grammy mention, the free hour, the trac[4D[K
+track link, and media availability. Also, check that the contact email is c[1D[K
+correct and the format matches exactly as specified.
+...done thinking.
+
+OUTLET: Bally Sports South & Southeast  
+CONTACT EMAIL: press@sports.sbgnet.com  
+=========================================  
+SUBJECT: Grammy-Nominated Producer Mykel T. Brooks Launches ‘The Afterparty[10D[K
+Afterparty’ & Offers Free Studio Time to Atlanta Indie Artists  
+
+Grammy-nominated producer Mykel T. Brooks—son of a Jamaican pastor and 15-y[4D[K
+15-year veteran of hip-hop/R&B—is redefining industry access with **The Aft[3D[K
+Afterparty**, a groundbreaking live music portal featuring the viral single[6D[K
+single *“Toni Macaroni”* (http://sqtheafterparty.base44.app/). Now, Brooks [K
+is amplifying his mission by offering **1 free hour of elite tracking** at [K
+Volt Records’ analog-heavy studio, giving Atlanta’s independent artists a r[1D[K
+rare glimpse into major-label production mastery.  
+
+This initiative merges Brooks’ Grammy pedigree with a tech-forward approach[8D[K
+approach, bypassing traditional streaming gateways to empower creators. The[3D[K
+The Afterparty’s immersive experience—paired with high-res master files lik[3D[K
+like *Toni_Macaroni_Master.wav*—showcases Brooks’ commitment to elevating l[1D[K
+local talent while preserving artist ownership.  
+
+Ready to explore the future of music? Visit http://sqtheafterparty.base44.a[31D[K
+http://sqtheafterparty.base44.app/ for the full experience. High-res media,[6D[K
+media, including *Toni_Macaroni_Master.wav*, are available for immediate di[2D[K
+distribution. Let’s connect to amplify this story.

@@ -1,0 +1,11 @@
+.venv/
+jobs/
+**/__pycache__/
+*.pyc
+.git/
+.gitignore
+.idea/
+.vscode/
+.DS_Store
+.python-version
+README.md

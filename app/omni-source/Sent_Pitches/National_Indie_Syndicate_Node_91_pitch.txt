@@ -1,0 +1,68 @@
+Thinking...
+Okay, I need to help the user create a compelling pitch email for National_[9D[K
+National_Indie_Syndicate_Node_91. Let me start by reviewing the provided in[2D[K
+information.
+
+First, the target is a national indie syndicate, so the focus should be on [K
+the music aspect. The PR hook strategy says to highlight Grammy nomination,[11D[K
+nomination, 'Toni Macaroni', and the free studio hour. Also, the subject li[2D[K
+line must include 'Grammy-Nominated'.
+
+The user wants the email to be concise, three paragraphs max, with a clear [K
+CTA to the live portal. Also, mention the high-res media files available.
+
+I should start with the outlet and contact email as specified. The subject [K
+line needs a hook. Maybe something like "Grammy-Nominated Producer Mykel T.[2D[K
+T. Brooks Offers Exclusive Studio Access & Launches 'The Afterparty' with H[1D[K
+Hit Single 'Toni Macaroni'". That includes the required term and key points[6D[K
+points.
+
+First paragraph: Introduce Mykel, his Grammy nomination, the free hour init[4D[K
+initiative at Volt Records, and mention 'Toni Macaroni' with the link. High[4D[K
+Highlight the opportunity for indie artists.
+
+Second paragraph: Talk about 'The Afterparty' and the track, emphasizing th[2D[K
+the live portal and the unique experience. Mention the studio's premium equ[3D[K
+equipment.
+
+Third paragraph: Call to action for the outlet to check the portal, offer m[1D[K
+media files, and contact for more info. Make sure to include the link and t[1D[K
+the media files availability.
+
+Check the rules again: subject line has 'Grammy-Nominated', three paragraph[9D[K
+paragraphs, CTA, media files mentioned. Also, the format must match exactly[7D[K
+exactly. Avoid markdown, use line breaks as specified.
+
+Double-check the contact email and outlet name. Make sure the paragraphs ar[2D[K
+are concise and flow well. Use the provided links and file names correctly.[10D[K
+correctly. Alright, that should cover all the requirements.
+...done thinking.
+
+OUTLET: National_Indie_Syndicate_Node_91  
+CONTACT EMAIL: syndicate_submissions_91@media-net-usa.org  
+=========================================  
+SUBJECT: Grammy-Nominated Producer Mykel T. Brooks Offers Exclusive Studio [K
+Access & Launches ‘The Afterparty’ with Hit Single ‘Toni Macaroni’  
+
+Grammy-nominated producer and visionary Mykel T. Brooks is revolutionizing [K
+the music industry with his groundbreaking platform *The Afterparty*, now l[1D[K
+live at http://sqtheafterparty.base44.app/. As a 15-year veteran of hip-hop[7D[K
+hip-hop/R&B and son of a Jamaican pastor, Brooks is giving Atlanta’s indepe[6D[K
+independent artists a rare opportunity: **1 free hour of elite studio track[5D[K
+tracking** at Volt Records—featuring Neumann and Tube-Tech analog chains—to[9D[K
+chains—to experience major-label master quality firsthand. This initiative [K
+underscores his mission to empower local creators while bridging the gap be[2D[K
+between indie and industry standards.  
+
+The campaign’s flagship track, *Toni Macaroni*, is already making waves as [K
+a bold fusion of genre-defying energy and sonic precision. Available exclus[6D[K
+exclusively via the *The Afterparty* portal, the single offers listeners a [K
+front-row seat to Brooks’ artistry and the immersive world he’s building. W[1D[K
+With high-res master files (including *Toni_Macaroni_Master.wav*) ready for[3D[K
+for immediate distribution, this is a moment for national outlets to amplif[6D[K
+amplify a story at the intersection of innovation, legacy, and community up[2D[K
+uplift.  
+
+Visit http://sqtheafterparty.base44.app/ to explore the project, and reach [K
+out for access to media assets or interviews with Brooks. This is more than[4D[K
+than a release—it’s a movement. Let’s connect to elevate it.

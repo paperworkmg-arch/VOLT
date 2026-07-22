@@ -1,0 +1,215 @@
+:root {
+  color-scheme: dark;
+  --bg: #050b10;
+  --panel: #101a22;
+  --line: rgba(148, 163, 184, 0.2);
+  --ink: #f0f2f5;
+  --muted: #9aa3ad;
+  --gold: #d8a84a;
+  --ok: #54c568;
+  --err: #ef4f58;
+  font-family:
+    "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(circle at 80% 10%, rgba(216, 168, 74, 0.1), transparent 26rem),
+    radial-gradient(circle at 12% 92%, rgba(62, 141, 207, 0.09), transparent 24rem),
+    var(--bg);
+  color: var(--ink);
+}
+
+.setup-shell {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 32px;
+}
+
+.setup-card {
+  width: min(760px, 100%);
+  padding: 32px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), transparent), var(--panel);
+  box-shadow: 0 20px 90px rgba(0, 0, 0, 0.34);
+}
+
+.brand-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 32px;
+  letter-spacing: 0;
+}
+
+.brand-row span {
+  padding: 3px 7px;
+  border: 1px solid rgba(216, 168, 74, 0.58);
+  border-radius: 7px;
+  color: #f1cf82;
+  font-size: 13px;
+}
+
+.subtitle {
+  margin: 8px 0 26px;
+  color: var(--muted);
+}
+
+.setup-steps {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.setup-steps li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 42px;
+  padding: 0 14px;
+  border: 1px solid rgba(148, 163, 184, 0.08);
+  border-radius: 8px;
+  background: rgba(3, 10, 15, 0.34);
+  color: rgba(154, 163, 173, 0.45); /* dimmed — queued */
+  transition: color 240ms ease, border-color 240ms ease;
+}
+
+/* pending: small hollow ring, barely visible */
+.setup-steps li::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 12px;
+  height: 12px;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+/* active: gold spinning ring */
+.setup-steps li.active {
+  color: var(--gold);
+  border-color: rgba(216, 168, 74, 0.22);
+}
+
+.setup-steps li.active::before {
+  opacity: 1;
+  border-color: var(--gold);
+  border-top-color: transparent;
+  animation: spin 750ms linear infinite;
+}
+
+/* done: bright green ✓ */
+.setup-steps li.done {
+  color: var(--ok);
+  border-color: rgba(84, 197, 104, 0.18);
+}
+
+.setup-steps li.done::before {
+  content: "✓";
+  width: auto;
+  height: auto;
+  border: 0;
+  opacity: 1;
+  font-size: 14px;
+  line-height: 1;
+  animation: none;
+}
+
+/* error: red ✗ */
+.setup-steps li.error {
+  color: var(--err);
+  border-color: rgba(239, 79, 88, 0.25);
+}
+
+.setup-steps li.error::before {
+  content: "✗";
+  width: auto;
+  height: auto;
+  border: 0;
+  opacity: 1;
+  font-size: 14px;
+  line-height: 1;
+  animation: none;
+}
+
+.status {
+  margin: 24px 0 0;
+  color: #cbd2da;
+}
+
+.progress-wrap {
+  height: 4px;
+  background: rgba(148, 163, 184, 0.15);
+  border-radius: 2px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--gold);
+  border-radius: 2px;
+  width: 0%;
+  transition: width 0.15s linear;
+}
+
+.progress-fill.indeterminate {
+  width: 35%;
+  animation: progress-slide 1.6s ease-in-out infinite;
+}
+
+@keyframes progress-slide {
+  0% { transform: translateX(-200%); }
+  100% { transform: translateX(400%); }
+}
+
+.details {
+  max-height: 180px;
+  overflow: auto;
+  margin: 16px 0 0;
+  padding: 12px;
+  border: 1px solid rgba(239, 79, 88, 0.25);
+  border-radius: 8px;
+  color: #ffd0d4;
+  background: rgba(239, 79, 88, 0.08);
+  white-space: pre-wrap;
+}
+
+.actions {
+  margin-top: 20px;
+}
+
+button {
+  min-height: 42px;
+  padding: 0 18px;
+  border: 1px solid rgba(216, 168, 74, 0.4);
+  border-radius: 8px;
+  background: rgba(216, 168, 74, 0.14);
+  color: #f1cf82;
+  font: inherit;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

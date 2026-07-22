@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "root": "https://github.com/cocktailpeanut/ace-step-ui.pinokio",
+  "repos": [
+    {
+      "path": ".",
+      "repo": "https://github.com/cocktailpeanut/ace-step-ui.pinokio",
+      "commit": "68688b95bbe10f8a923801175c4577d9996fecf5"
+    },
+    {
+      "path": "app",
+      "repo": "https://github.com/fspecii/ace-step-ui",
+      "commit": "b9e24018e199f2a89976562e4f33213d67d25b9f"
+    },
+    {
+      "path": "app/ACE-Step-1.5",
+      "repo": "https://github.com/ace-step/ace-step-1.5",
+      "commit": "dce621408bee8c31b4fcf4811682eb9359e1bc94"
+    }
+  ]
+}

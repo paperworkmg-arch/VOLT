@@ -1,0 +1,74 @@
+Thinking...
+Okay, I need to help the user by creating a pitch email for 11Alive (WXIA-T[7D[K
+(WXIA-TV) about Mykel T. Brooks and his initiative. Let me start by recalli[7D[K
+recalling the key points from the provided context.
+
+First, the target outlet is 11Alive, an NBC affiliate. The PR hook strategy[8D[K
+strategy for TV would probably focus on the cultural and community aspects,[8D[K
+aspects, maybe the app architecture since it's a TV outlet. But the user al[2D[K
+also mentioned if it's business/tech/culture, highlight the app and the Jam[3D[K
+Jamaican resilience. However, since it's TV, maybe a mix of both music and [K
+the community impact.
+
+The subject line must include "Grammy-Nominated". The user wants a hook tit[3D[K
+title that's catchy. Maybe something like "Grammy-Nominated Producer Mykel [K
+T. Brooks Launches 'The Afterparty' and Gives Back to Atlanta Indie Artists[7D[K
+Artists with Free Studio Time".
+
+Now, the body needs three paragraphs. The first paragraph should introduce [K
+Mykel, his Grammy nomination, the Afterparty project, and the free hour ini[3D[K
+initiative. Mention the track 'Toni Macaroni' and the live portal. The seco[4D[K
+second paragraph could delve into the studio setup at Volt Records and the [K
+impact on local artists. The third paragraph should be the call to action, [K
+linking to the live portal and offering media files.
+
+Also, need to explicitly state that Toni_Macaroni_Master.wav and high-res m[1D[K
+media are ready. Make sure to include the link in the call to action. Check[5D[K
+Check the rules again: max 3 paragraphs, clear CTA, subject line with Gramm[5D[K
+Grammy-Nominated.
+
+Wait, the user provided an example format. Let me make sure to follow that [K
+exactly. The OUTLET and CONTACT EMAIL lines are already filled. Then the SU[2D[K
+SUBJECT line, followed by three paragraphs. Each paragraph should be concis[6D[K
+concise. Avoid jargon but highlight the key points: Grammy nom, Afterparty,[11D[K
+Afterparty, free studio time, Volt Records, the track, and the media availa[6D[K
+availability.
+
+I need to ensure that the tone is engaging and persuasive, suitable for a T[1D[K
+TV outlet. Maybe emphasize the unique aspects like the app architecture byp[3D[K
+bypassing streaming services, but since it's TV, maybe focus more on the co[2D[K
+community aspect and the free hour as a way to give back. Also, mention the[3D[K
+the Jamaican heritage as part of his resilience.
+
+Check if all required elements are included: Grammy-Nominated in subject, t[1D[K
+three paragraphs, CTA with link, mention of media files. Avoid markdown, ju[2D[K
+just plain text with line breaks. Alright, let me draft the email according[9D[K
+accordingly.
+...done thinking.
+
+OUTLET: 11Alive (WXIA-TV)  
+CONTACT EMAIL: newstips@11alive.com  
+=========================================  
+SUBJECT: Grammy-Nominated Producer Mykel T. Brooks Launches ‘The Afterparty[10D[K
+Afterparty’ & Gives Atlanta Indie Artists Free Studio Time  
+
+Grammy-nominated producer Mykel T. Brooks is revolutionizing the music indu[4D[K
+industry with his immersive platform *The Afterparty*, featuring the viral [K
+single “Toni Macaroni” (stream live at http://sqtheafterparty.base44.app/).[36D[K
+http://sqtheafterparty.base44.app/). A 15-year veteran of hip-hop/R&B, Broo[4D[K
+Brooks is now empowering Atlanta’s independent artists by offering **1 free[4D[K
+free hour of elite studio tracking** at Volt Records—complete with premium [K
+analog gear like Neumann and Tube-Tech—to showcase major-label quality prod[4D[K
+production to grassroots creators.  
+
+Backed by his Jamaican heritage and a career crafting hits for icons, Brook[5D[K
+Brooks’ initiative bridges the gap between indie talent and studio excellen[8D[K
+excellence. The Afterparty isn’t just a project—it’s a movement, blending c[1D[K
+cutting-edge app architecture with community-driven access, proving that ow[2D[K
+ownership and innovation can coexist. High-res media, including the master [K
+of “Toni Macaroni” (Toni_Macaroni_Master.wav), is ready for immediate distr[5D[K
+distribution.  
+
+Visit http://sqtheafterparty.base44.app/ to experience the future of music [K
+creation and learn how Brooks is reshaping Atlanta’s sound. Contact us for [K
+exclusive access to media and interviews.

@@ -1,0 +1,74 @@
+THIRD-PARTY NOTICES
+===================
+
+StemDeck includes third-party open-source software. Each component is
+copyrighted by its respective authors and distributed under its own license.
+
+This starter notice is not a substitute for the full license inventory that
+must be generated from the final packaged Python runtime before a public
+release.
+
+Bundled Components
+------------------
+
+Python
+License: Python Software Foundation License
+Website: https://www.python.org/
+
+Tauri
+License: MIT or Apache-2.0, depending on component
+Website: https://tauri.app/
+
+FastAPI
+License: MIT
+Website: https://fastapi.tiangolo.com/
+
+Uvicorn
+License: BSD
+Website: https://www.uvicorn.org/
+
+yt-dlp
+License: Unlicense
+Website: https://github.com/yt-dlp/yt-dlp
+
+Demucs
+License: MIT
+Website: https://github.com/facebookresearch/demucs
+
+PyTorch / Torch
+License: BSD-style
+Website: https://pytorch.org/
+
+torchaudio
+License: BSD-style
+Website: https://pytorch.org/audio/
+
+librosa
+License: ISC
+Website: https://librosa.org/
+
+pyloudnorm
+License: MIT
+Website: https://github.com/csteinmetz1/pyloudnorm
+
+soundfile
+License: BSD
+Website: https://github.com/bastibe/python-soundfile
+
+Downloaded During First-Run Setup
+---------------------------------
+
+FFmpeg binaries are not bundled in the StemDeck alpha zip. They are downloaded
+during first-run setup. FFmpeg builds may be distributed under LGPL or GPL
+terms depending on how they are compiled. StemDeck should display the selected
+FFmpeg build source and license before or during download.
+
+Demucs model weights are not bundled in the StemDeck alpha zip. They are
+downloaded during first use. StemDeck should display the model source and
+license/usage terms before or during download.
+
+Disclaimer
+----------
+
+This notice file is not legal advice. Before public release, verify the exact
+licenses of every bundled package and generated binary artifact.

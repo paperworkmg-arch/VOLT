@@ -1,0 +1,18 @@
+# CVE-2025-32434: torch remote code execution via torch.load, fixed in 2.6.0.
+# The Intel macOS (x86_64) runtime is pinned to torch>=2.2,<2.3 because
+# PyTorch does not publish macOS x86_64 wheels for 2.6.x. StemDeck never
+# calls torch.load() on untrusted input; all model weights are fetched by
+# Demucs from its own trusted cache. Risk on a local single-user app with
+# no network-facing torch.load path is negligible.
+# Drop this ignore once PyTorch publishes 2.6.x macOS x86_64 wheels or once
+# the torchaudio/torchcodec story stabilises and the pin can be lifted.
+CVE-2025-32434
+
+# DS-0002: Dockerfile missing USER instruction.
+# The image intentionally starts as root so the entrypoint script
+# (build/docker-entrypoint.sh) can re-chown the bind-mounted /app/jobs
+# directory before dropping to the app user (uid 1001) via gosu. The
+# process runs as non-root for its entire lifetime after the entrypoint
+# executes. Trivy's check does not account for the gosu privilege-drop
+# pattern.
+DS-0002

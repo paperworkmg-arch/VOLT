@@ -1,0 +1,86 @@
+Thinking...
+Okay, let's tackle this query. The user wants a pitch for Univision Atlanta[7D[K
+Atlanta about Mykel T. Brooks. First, I need to make sure I follow all the [K
+rules. The subject line must include "Grammy-Nominated," so that's a start.[6D[K
+start. The email should be three paragraphs max, with a clear CTA to the li[2D[K
+live portal link. Also, mention the high-res media files.
+
+Looking at the target outlet, Univision is a Spanish-language TV station. T[1D[K
+The PR hook strategy says for Spanish-language outlets, focus on the Grammy[6D[K
+Grammy nomination, the track 'Toni Macaroni,' and the free studio hour. But[3D[K
+But wait, the user provided a note that says "If Radio/Music: Highlight..."[13D[K
+Highlight..." and "If Business/Tech/Culture: Focus on..." but the outlet is[2D[K
+is Univision, which is TV. However, the note doesn't specify for TV. Maybe [K
+the Radio/Music hook is more applicable here since it's about music. But si[2D[K
+since it's TV, maybe a blend of both? Hmm.
+
+Wait, the user's PR strategy has two scenarios: Radio/Music and Business/Te[11D[K
+Business/Tech/Culture. Since Univision is a TV station, perhaps the Radio/M[7D[K
+Radio/Music approach is better, as it's about the music and the free studio[6D[K
+studio hour. Also, the user's note says "Notes: Univision Spanish-language,[17D[K
+Spanish-language," so maybe the hook should be in Spanish? But the user has[3D[K
+hasn't specified that. Wait, the original query's output example is in Engl[4D[K
+English. The user might expect the email to be in English, even though Univ[4D[K
+Univision is Spanish-language. Maybe the contact is for a Spanish-speaking [K
+audience, but the pitch itself is in English. I'll proceed with English as [K
+per the example.
+
+Next, the subject line. The hook title should be catchy. Maybe something li[2D[K
+like "Grammy-Nominated Producer Mykel T. Brooks Launches 'The Afterparty' a[1D[K
+and Offers Free Studio Time to Atlanta Indie Artists." That includes Grammy[6D[K
+Grammy-Nominated and the key points.
+
+First paragraph: Introduce Mykel, his Grammy nomination, the initiative wit[3D[K
+with Volt Records, and the free hour. Mention the track 'Toni Macaroni' and[3D[K
+and the live portal. Second paragraph: Highlight the impact on the local in[2D[K
+indie scene and the app architecture. Third paragraph: Call to action for t[1D[K
+the media files and the portal link. Need to make sure the Toni_Macaroni_Ma[16D[K
+Toni_Macaroni_Master.wav is mentioned explicitly.
+
+Check the rules again: three paragraphs, CTA with the link, mention media f[1D[K
+files ready. Also, the contact email is noticiasatlanta@univision.net. The [K
+outlet is Univision Atlanta (WUVG-DT). Make sure all these are included. Av[2D[K
+Avoid markdown, just plain text with the specified format.
+
+Double-check the assets: Toni_Macaroni_Master.wav and high-res media files [K
+are ready. Need to state that explicitly in the third paragraph. Also, the [K
+studio details (Volt Records, analog chains) can be included in the second [K
+paragraph to emphasize the quality.
+
+Okay, putting it all together now. Start with the OUTLET and CONTACT EMAIL,[6D[K
+EMAIL, then the subject line, followed by three paragraphs with the necessa[7D[K
+necessary elements.
+...done thinking.
+
+OUTLET: Univision Atlanta (WUVG-DT)  
+CONTACT EMAIL: noticiasatlanta@univision.net  
+=========================================  
+SUBJECT: Grammy-Nominated Producer Mykel T. Brooks Offers Free Studio Time [K
+to Atlanta Indie Artists  
+
+Grammy-nominated producer Mykel T. Brooks is redefining the music industry [K
+with his groundbreaking platform, *The Afterparty*, and a bold initiative t[1D[K
+to empower independent artists. Through his partnership with Volt Records, [K
+Brooks is offering **1 free hour of elite studio tracking** at a premium an[2D[K
+analog chain (Neumann/Tube-Tech) to Atlanta-based creators, giving them a r[1D[K
+rare glimpse into major-label production standards. His flagship project, *[1D[K
+*The Afterparty*—featuring the viral single **"Toni Macaroni"** (live porta[5D[K
+portal: [http://sqtheafterparty.base44.app/](http://sqtheafterparty.base44.[67D[K
+[http://sqtheafterparty.base44.app/](http://sqtheafterparty.base44.app/))—h[http://sqtheafterparty.base44.app/](http://sqtheafterparty.base44.pp/))—has already sparked a movement, blending innovation with community-driven art[3D[K
+artistry.  
+
+Brooks, a 15-year veteran in hip-hop/R&B and son of a Jamaican pastor, leve[4D[K
+leverages his Grammy pedigree and tech-savvy to bypass traditional streamin[8D[K
+streaming models. His app architecture for *The Afterparty* not only showca[6D[K
+showcases his creative vision but also amplifies indie voices, proving that[4D[K
+that ownership and quality can coexist. By democratizing access to world-cl[8D[K
+world-class studio resources, Brooks is fostering a new era of collaboratio[12D[K
+collaboration and excellence in Atlanta’s music scene.  
+
+High-res media files, including the mastered version of **"Toni Macaroni"**[11D[K
+Macaroni"** (*Toni_Macaroni_Master.wav*), are ready for immediate distribut[9D[K
+distribution. Visit [http://sqtheafterparty.base44.app/](http://sqtheafterp[55D[K
+[http://sqtheafterparty.base44.app/](http://sqtheafterparty.base44.app/) to[2D[K
+to explore the project and learn how to claim your free hour of studio time[4D[K
+time. Let’s connect to share this story of resilience, innovation, and comm[4D[K
+community impact.
