@@ -28,7 +28,7 @@ module.exports = {
       method: "shell.run",
       params: {
         venv: "env",
-        path: "app",
+        path: "app/dashboard",
         message: [
           "uv pip install -r requirements.txt"
         ]
@@ -54,6 +54,47 @@ module.exports = {
           path: "app/stable-audio-3",
           flashattention: true
         }
+      }
+    },
+    {
+      when: "{{platform === 'darwin' && !exists('app/tascar/build')}}",
+      method: "shell.run",
+      params: {
+        path: "app/tascar",
+        message: [
+          "brew install jack libsndfile liblo libltc gtkmm3 libxml++ fftw boost gsl eigen libsamplerate portaudio liblsl cmake pkg-config doxygen 2>/dev/null || true",
+          "make -j$(sysctl -n hw.ncpu)"
+        ]
+      }
+    },
+    {
+      when: "{{platform === 'linux' && !exists('app/tascar/build')}}",
+      method: "shell.run",
+      params: {
+        path: "app/tascar",
+        message: [
+          "sudo apt-get update && sudo apt-get install -y build-essential default-jre doxygen dpkg-dev g++ git imagemagick jackd2 libasound2-dev libboost-all-dev libcairomm-1.0-dev libeigen3-dev libfftw3-dev libfftw3-double3 libfftw3-single3 libgsl-dev libgtkmm-3.0-dev libgtksourceviewmm-3.0-dev libjack-jackd2-dev liblo-dev libltc-dev libmatio-dev libsndfile1-dev libwebkit2gtk-4.0-dev libxml++2.6-dev lsb-release make portaudio19-dev ruby-dev software-properties-common texlive-latex-extra texlive-latex-recommended vim-common wget libsamplerate0-dev cmake 2>/dev/null || true",
+          "make -j$(nproc)"
+        ]
+      }
+    },
+    {
+      when: "{{!exists('app/stabledaw-pinokio-git/frontend/node_modules')}}",
+      method: "shell.run",
+      params: {
+        path: "app/stabledaw-pinokio-git/frontend",
+        message: [
+          "npm ci"
+        ]
+      }
+    },
+    {
+      method: "shell.run",
+      params: {
+        path: "app/stabledaw-pinokio-git/frontend",
+        message: [
+          "npm run build"
+        ]
       }
     },
     {

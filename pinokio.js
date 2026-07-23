@@ -7,7 +7,7 @@ module.exports = {
   icon: "icon.png",
   menu: async (kernel) => {
     let installing = await kernel.running(__dirname, "install.js")
-    let installed = await kernel.exists(__dirname, "app", "dashboard", "venv")
+    let installed = await kernel.exists(__dirname, "app", "dashboard", "env")
     let running = await kernel.running(__dirname, "start.js")
 
     if (installing) {

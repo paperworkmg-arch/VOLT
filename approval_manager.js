@@ -11,7 +11,6 @@ module.exports = {
     {
       method: "shell.run",
       params: {
-        venv: "env",
         path: "app/omni-source",
         message: [
           "python scripts/approval_manager.py list"

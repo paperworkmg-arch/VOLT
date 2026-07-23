@@ -59,6 +59,16 @@ module.exports = {
           "npm run build"
         ]
       }
+    },
+    {
+      method: "shell.run",
+      params: {
+        venv: "env",
+        path: "app/dashboard",
+        message: [
+          "uv pip install -r requirements.txt"
+        ]
+      }
     }
   ]
 }

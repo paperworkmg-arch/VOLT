@@ -12,7 +12,6 @@ module.exports = {
     {
       method: "shell.run",
       params: {
-        venv: "env",
         path: "app/omni-source",
         message: [
           "python scripts/freelance_bot.py check"
@@ -27,7 +26,6 @@ module.exports = {
     {
       method: "shell.run",
       params: {
-        venv: "env",
         path: "app/omni-source",
         message: [
           "sleep 600 && python scripts/freelance_bot.py check"
