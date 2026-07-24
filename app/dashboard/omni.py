@@ -28,6 +28,14 @@ except ImportError:
 KIMI_API_KEY = os.getenv("KIMI_API_KEY", "")
 KIMI_BASE_URL = "https://api.kimi.com/coding"
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
+
+# Volt Records catalog vault
+VAULT_DIR = BASE / "data" / "vault"
+sys.path.insert(0, str(VAULT_DIR))
+from vault import Vault as _CatalogVault
+
+_catalog_vault = _CatalogVault(str(VAULT_DIR / "vault.db"))
+_catalog_vault.init_schema()
 OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434/v1")
 XAI_API_KEY = os.getenv("XAI_API_KEY", "")
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY", "")
@@ -782,6 +790,7 @@ from fastapi.templating import Jinja2Templates
 async def lifespan(app):
     await init_db(); scheduler.start(); await sync_schedules()
     _contacts_module.init_contacts_db()
+    _init_crm()
 
     # Start audio ingestion watcher
     ingest_handler = AudioIngestionHandler()
@@ -1699,10 +1708,99 @@ def _crm_conn():
 
 def _init_crm():
     """Ensure CRM tables exist."""
-    if CRM_DB.exists():
-        return
-    import migrate_music_library_schema
-    migrate_music_library_schema.migrate()
+    import sqlite3 as _s3
+    CRM_DB.parent.mkdir(parents=True, exist_ok=True)
+    conn = _s3.connect(str(CRM_DB))
+    c = conn.cursor()
+
+    c.execute("""
+        CREATE TABLE IF NOT EXISTS leads (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT,
+            email TEXT,
+            city TEXT,
+            phone TEXT,
+            company TEXT,
+            role TEXT,
+            status TEXT DEFAULT 'SCRAPED',
+            gate_code TEXT,
+            sub_library TEXT,
+            title TEXT,
+            linkedin_url TEXT,
+            source TEXT DEFAULT 'SCRAPED',
+            notes TEXT,
+            tags TEXT DEFAULT '[]',
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    """)
+
+    c.execute("""
+        CREATE TABLE IF NOT EXISTS pitches (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            lead_id INTEGER,
+            outlet TEXT,
+            media_type TEXT,
+            contact_email TEXT,
+            subject TEXT,
+            body TEXT,
+            status TEXT DEFAULT 'DRAFT',
+            sent_at TIMESTAMP,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (lead_id) REFERENCES leads(id)
+        )
+    """)
+
+    c.execute("""
+        CREATE TABLE IF NOT EXISTS payments (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            lead_id INTEGER,
+            artist_name TEXT,
+            amount REAL,
+            platform TEXT,
+            matched_from TEXT,
+            gate_code TEXT,
+            status TEXT DEFAULT 'CONFIRMED',
+            detected_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (lead_id) REFERENCES leads(id)
+        )
+    """)
+
+    c.execute("""
+        CREATE TABLE IF NOT EXISTS sessions (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            lead_id INTEGER,
+            artist_name TEXT,
+            session_date TEXT,
+            duration_hours REAL DEFAULT 1.0,
+            gate_code TEXT,
+            status TEXT DEFAULT 'SCHEDULED',
+            notes TEXT,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (lead_id) REFERENCES leads(id)
+        )
+    """)
+
+    c.execute("""
+        CREATE TABLE IF NOT EXISTS media_contacts (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            outlet TEXT,
+            media_type TEXT,
+            contact_email TEXT,
+            notes TEXT,
+            tier TEXT DEFAULT 'NATIONAL',
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    """)
+
+    c.execute("CREATE INDEX IF NOT EXISTS idx_leads_status ON leads(status)")
+    c.execute("CREATE INDEX IF NOT EXISTS idx_leads_source ON leads(source)")
+    c.execute("CREATE INDEX IF NOT EXISTS idx_leads_linkedin ON leads(linkedin_url)")
+    c.execute("CREATE INDEX IF NOT EXISTS idx_pitches_status ON pitches(status)")
+    c.execute("CREATE INDEX IF NOT EXISTS idx_payments_status ON payments(status)")
+
+    conn.commit()
+    conn.close()
 
 @app.get("/api/leads")
 async def api_leads(status: str = "", source: str = "", limit: int = 200):
@@ -1991,6 +2089,63 @@ async def api_pmg_reenrich():
     """Trigger re-enrichment of catalog"""
     # In production, this would trigger the enrichment job
     return {"status": "re-enrichment queued", "message": "Run enrichment script to update"}
+
+# === Catalog API (Volt Records) ===
+
+@app.get("/api/catalog/tracks")
+async def api_catalog_tracks(
+    bucket: str = "",
+    key: str = "",
+    brightness: str = "",
+    hpi_min: float = 0.0,
+    hpi_max: float = 10.0,
+    bpm_min: float = 0.0,
+    bpm_max: float = 999.0,
+    search: str = "",
+    limit: int = 200,
+    offset: int = 0,
+):
+    return _catalog_vault.get_catalog_tracks(
+        bucket=bucket or None,
+        key=key or None,
+        brightness=brightness or None,
+        hpi_min=hpi_min,
+        hpi_max=hpi_max,
+        bpm_min=bpm_min,
+        bpm_max=bpm_max,
+        search=search or None,
+        limit=limit,
+        offset=offset,
+    )
+
+@app.get("/api/catalog/tracks/{track_id}")
+async def api_catalog_track(track_id: int):
+    track = _catalog_vault.get_track(track_id)
+    if not track:
+        raise HTTPException(404, "Track not found")
+    return track
+
+@app.get("/api/catalog/summary")
+async def api_catalog_summary():
+    return _catalog_vault.get_catalog_summary()
+
+@app.get("/api/catalog/top-prospects")
+async def api_catalog_top_prospects(n: int = 6):
+    return _catalog_vault.get_top_prospects(n)
+
+@app.get("/api/catalog/keys")
+async def api_catalog_keys():
+    return _catalog_vault.get_catalog_by_key()
+
+@app.get("/api/catalog/buckets")
+async def api_catalog_buckets():
+    return _catalog_vault.get_catalog_by_bucket()
+
+@app.get("/api/catalog/search")
+async def api_catalog_search(q: str = "", limit: int = 50):
+    if not q:
+        raise HTTPException(400, "Query parameter 'q' is required")
+    return _catalog_vault.search_catalog(q, limit)
 
 # --- Volt Dashboard SPA (must be registered LAST) ---
 from starlette.exceptions import HTTPException as StarletteHTTPException
