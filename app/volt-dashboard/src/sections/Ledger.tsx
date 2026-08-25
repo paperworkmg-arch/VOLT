@@ -103,7 +103,7 @@ export default function Ledger({ filters, onFiltersChange }: Props) {
     if (!filters.highlight) return
     const idx = sorted.findIndex((t) => t.track === filters.highlight)
     if (idx >= 0) setPage(Math.floor(idx / PAGE_SIZE) + 1)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+     
   }, [filters.highlight, sorted])
 
   /* ---- toolbar height for sticky thead offset ---- */
