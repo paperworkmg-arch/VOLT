@@ -103,7 +103,7 @@ function BpmSpark({ tracks }: { tracks: { bpm: number }[] }) {
     const idx = Math.min(11, Math.max(0, Math.floor(((t.bpm - 60) / 130) * 12)))
     bins[idx] += 1
   }
-  const max = Math.max(...bins)
+  const max = Math.max(...bins) || 1
   const pts = bins.map((c, i) => [2 + (i * 92) / 11, 24 - (c / max) * 20] as const)
   const d = pts.map(([x, y], i) => `${i === 0 ? 'M' : 'L'}${Number.isFinite(x) ? x.toFixed(1) : '0.0'},${Number.isFinite(y) ? y.toFixed(1) : '0.0'}`).join(' ')
   const [ex, ey] = pts[pts.length - 1]
