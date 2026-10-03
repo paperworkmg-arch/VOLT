@@ -1,0 +1,32 @@
+{
+  "previewPort": 3000,
+  "healthPath": "/",
+  "startCommand": "docker compose -f docker-compose.base44.yml up -d",
+  "secrets": [
+    {
+      "name": "KIMI_API_KEY",
+      "description": "Kimi LLM API key for AI agent features (optional — app boots without it)",
+      "requiredAtBoot": false
+    },
+    {
+      "name": "OPENROUTER_API_KEY",
+      "description": "OpenRouter API key for LLM routing fallback (optional)",
+      "requiredAtBoot": false
+    },
+    {
+      "name": "GOOGLE_API_KEY",
+      "description": "Google/Gemini API key for LLM features (optional)",
+      "requiredAtBoot": false
+    },
+    {
+      "name": "XAI_API_KEY",
+      "description": "xAI/Grok API key for LLM features (optional)",
+      "requiredAtBoot": false
+    },
+    {
+      "name": "SLACK_WEBHOOK_URL",
+      "description": "Slack webhook URL for notification delivery (optional)",
+      "requiredAtBoot": false
+    }
+  ]
+}
