@@ -25,6 +25,13 @@ module.exports = {
       }
     },
     {
+      when: "{{!exists('app/wangp')}}",
+      method: "shell.run",
+      params: {
+        message: "git clone https://github.com/deepbeepmeep/Wan2GP.git app/wangp"
+      }
+    },
+    {
       method: "shell.run",
       params: {
         venv: "env",

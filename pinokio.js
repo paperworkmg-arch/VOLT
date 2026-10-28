@@ -3,7 +3,7 @@ const path = require('path')
 module.exports = {
   version: "7.0",
   title: "Omni Studio",
-  description: "Unified audio AI studio — StableDAW + Stable Audio 3 + TASCAR + Catalog Intelligence. https://github.com/Stability-AI/stable-audio-3 / https://github.com/gantasmo/stabledaw",
+  description: "Unified audio AI studio — StableDAW + Stable Audio 3 + TASCAR + WanGP (video/image/TTS generation) + Catalog Intelligence. https://github.com/Stability-AI/stable-audio-3 / https://github.com/gantasmo/stabledaw",
   icon: "icon.png",
   menu: async (kernel) => {
     let installing = await kernel.running(__dirname, "install.js")
@@ -68,6 +68,10 @@ module.exports = {
         icon: "fa-solid fa-clock",
         text: "<div><strong>Daily Auto-Start</strong><div>Enable 6AM auto-launch + maintenance</div></div>",
         href: "daily_autostart.js"
+      }, {
+        icon: "fa-solid fa-clapperboard",
+        text: "<div><strong>WanGP</strong><div>Generative video, image, audio and TTS — Wan 2.1/2.2, LTX-2, Hunyuan, Flux, Qwen, Ace Step (GPU)</div></div>",
+        href: "wangp.js"
       }, {
         icon: "fa-solid fa-robot",
         text: "<div><strong>Proactive System</strong><div>Email, CRM, Finance, LoRA, Health - Fully Autonomous</div></div>",
