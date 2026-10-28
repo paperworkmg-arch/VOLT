@@ -1352,6 +1352,13 @@ AUDIO_APPS = {
         "description": "Spatial audio rendering in Ambisonics and VBAP",
         "app_id": "tascar",
         "icon": "fa-solid fa-headphones"
+    },
+    "wangp": {
+        "name": "WanGP",
+        "description": "Generative video, image, audio and TTS — Wan 2.1/2.2, LTX-2, Hunyuan Video, Flux, Qwen Image, Ace Step (Wan2GP by DeepBeepMeep, GPU required for generation)",
+        "app_id": "wangp",
+        "port": 7860,
+        "icon": "fa-solid fa-clapperboard"
     }
 }
 
