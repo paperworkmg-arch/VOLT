@@ -1,0 +1,16 @@
+# ── ACE-Step — append to app/.env (all optional; defaults shown) ────────────
+# Master switch for the generate endpoints (health stays up either way).
+ACESTEP_ENABLED=1
+# Staged launcher backend (primary surface) and the engine's own API.
+ACESTEP_API_BASE=http://127.0.0.1:3001
+ACESTEP_ENGINE_BASE=http://127.0.0.1:8001
+# ComfyUI (second surface) — set to wherever ComfyUI actually lives.
+COMFYUI_BASE=http://127.0.0.1:8188
+# Low-memory recipe (MacBook Air defaults — step up only after the proof).
+ACESTEP_MODEL=turbo
+ACESTEP_PLANNER=0.6b
+ACESTEP_DEFAULT_DURATION=60
+ACESTEP_MAX_DURATION=240
+ACESTEP_DEFAULT_FORMAT=flac
+# Where finished songs are filed as drafts (default: dashboard data dir).
+# ACESTEP_INBOX_DIR=
