@@ -13,11 +13,16 @@ Contract CONFIRMED 2026-11-02 from the launcher's own README + start.js
   - Poll status:   GET  /api/generate/status/{jobId}
   - There is NO download endpoint: finished audio is written by the
     backend to its public audio dir (app/server/public/audio) and the
-    status payload carries the reference. download() resolves that
-    reference (audioUrl / url / file / filename / path keys) and fetches
-    it; if the payload shape differs on the live backend, the error says
-    exactly what was missing — that is the one thing left to confirm in
-    proof step 2, against the running backend.
+    status payload carries the reference.
+  - LIVE-CONFIRMED 2026-11-02 (proof step 2, real backend): terminal
+    status is "succeeded"; the payload is
+        {"status":"succeeded","result":{"audioUrls":["/audio/<file>.mp3"
+        (or "/audio/<user-id>/<file>.mp3")],"duration":<sec>}}
+    While running it carries {"etaSeconds": n, "stage": "..."}.
+    "duration" IS honoured (30s/60s came back exact). Custom mode
+    REQUIRES "style" (or lyrics/reference) — see submit(). Backend
+    output is MP3 48 kHz stereo ~128 kbps. download() resolves the
+    audioUrls reference and fetches it with the bearer token.
   - Engine runs as: acestep --enable-api --backend pt with
     ACESTEP_LM_OFFLOAD_TO_CPU=true (planner in system RAM) — the
     low-memory recipe is already the launcher's own setting.
@@ -46,7 +51,8 @@ CONTRACT = {
 
 _DONE = {"complete", "completed", "done", "success", "succeeded", "finished"}
 _FAIL = {"error", "failed", "failure", "cancelled", "canceled"}
-_AUDIO_KEYS = ("audioUrl", "audio_url", "audioPath", "audio_path",
+_AUDIO_KEYS = ("audioUrls", "audio_urls", "audioUrl", "audio_url",
+               "audioPath", "audio_path",
                "url", "file", "filename", "path", "output")
 
 
@@ -74,6 +80,8 @@ def _find_audio_ref(data: dict) -> str | None:
             continue
         for key in _AUDIO_KEYS:
             val = source.get(key)
+            if isinstance(val, list):  # live backend: result.audioUrls[]
+                val = next((v for v in val if isinstance(v, str)), None)
             if isinstance(val, str) and val and (
                     "/" in val or val.lower().endswith((".flac", ".mp3", ".wav"))):
                 return val
@@ -129,8 +137,12 @@ class AceStepClient:
                 f"duration {duration}s exceeds ACESTEP_MAX_DURATION "
                 f"({cfg.ACESTEP_MAX_DURATION}s) — Air guardrail")
         payload = {
-            "customMode": bool(lyrics),
+            # Live-confirmed 2026-11-02: custom mode REQUIRES a "style"
+            # (or lyrics / reference audio) — an instrumental submit
+            # without style is rejected. Always send style=prompt.
+            "customMode": True,
             "songDescription": prompt,
+            "style": prompt,
             "instrumental": not lyrics,
             "lyrics": lyrics,
             # Best-effort passthrough: honoured if the backend accepts
