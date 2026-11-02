@@ -2,6 +2,8 @@
 # Master switch for the generate endpoints (health stays up either way).
 ACESTEP_ENABLED=1
 # Staged launcher backend (primary surface) and the engine's own API.
+# The backend is JWT-guarded — the hub sets up this local user on first use.
+ACESTEP_USERNAME=volt-hub
 ACESTEP_API_BASE=http://127.0.0.1:3001
 ACESTEP_ENGINE_BASE=http://127.0.0.1:8001
 # ComfyUI (second surface) — set to wherever ComfyUI actually lives.

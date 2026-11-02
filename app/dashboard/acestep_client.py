@@ -1,19 +1,26 @@
 """ACE-Step engine client — talks to the staged launcher's backend.
 
-The launcher (app/omni-source/pinokio/api/ace-step-ui.pinokio) runs the
-ACE-Step 1.5 engine with its API enabled and wraps it in a simple local
-flow: start a job, poll its status, download the finished song.
+Contract CONFIRMED 2026-11-02 from the launcher's own README + start.js
+(app/omni-source/pinokio/api/ace-step-ui.pinokio, read on the Mac):
 
-CONTRACT: the three endpoint paths below are the ONLY assumption this
-client makes about that backend. During proof step 1 (engine alone),
-check them against the launcher's README / a live call and adjust here —
-nothing else in the patch needs to change.
-
-    POST {base}/api/generate        -> {"job_id": "..."}
-    GET  {base}/api/status/{job_id} -> {"status": "queued|running|complete|error", ...}
-    GET  {base}/api/download/{job_id} -> audio bytes (flac/mp3)
-
-Status words are normalised to: queued / running / complete / error.
+  - UI on 3000, backend on 3000's sibling 3001, engine API on 8001.
+  - The backend (3001) is JWT-guarded. First call:
+        POST /api/auth/setup {"username": ...}  -> {"token": ...}
+    then send  Authorization: Bearer <token>  on everything else.
+  - Start a job:   POST /api/generate            -> {"jobId": ...}
+        body: {"customMode": bool, "songDescription": str,
+               "instrumental": bool, "lyrics": str (custom mode)}
+  - Poll status:   GET  /api/generate/status/{jobId}
+  - There is NO download endpoint: finished audio is written by the
+    backend to its public audio dir (app/server/public/audio) and the
+    status payload carries the reference. download() resolves that
+    reference (audioUrl / url / file / filename / path keys) and fetches
+    it; if the payload shape differs on the live backend, the error says
+    exactly what was missing — that is the one thing left to confirm in
+    proof step 2, against the running backend.
+  - Engine runs as: acestep --enable-api --backend pt with
+    ACESTEP_LM_OFFLOAD_TO_CPU=true (planner in system RAM) — the
+    low-memory recipe is already the launcher's own setting.
 
 All HTTP calls use trust_env=False: the hub only talks to localhost
 services, and a stray proxy variable in the host environment must never
@@ -31,14 +38,16 @@ import httpx
 import acestep_config as cfg
 
 CONTRACT = {
+    "setup": "/api/auth/setup",
     "generate": "/api/generate",
-    "status": "/api/status/{job_id}",
-    "download": "/api/download/{job_id}",
+    "status": "/api/generate/status/{job_id}",
     "health": "/",
 }
 
 _DONE = {"complete", "completed", "done", "success", "succeeded", "finished"}
 _FAIL = {"error", "failed", "failure", "cancelled", "canceled"}
+_AUDIO_KEYS = ("audioUrl", "audio_url", "audioPath", "audio_path",
+               "url", "file", "filename", "path", "output")
 
 
 @dataclass
@@ -49,6 +58,7 @@ class AceJob:
     lyrics: str = ""
     params: dict = field(default_factory=dict)
     local_path: Path | None = None  # set once filed into the catalog inbox
+    result_ref: str | None = None   # audio reference from the status payload
     error: str | None = None
     created_at: float = field(default_factory=time.time)
 
@@ -57,11 +67,25 @@ class AceStepError(RuntimeError):
     pass
 
 
+def _find_audio_ref(data: dict) -> str | None:
+    """Search a status payload (incl. one level of nesting) for audio."""
+    for source in (data, data.get("result") or {}, data.get("data") or {}):
+        if not isinstance(source, dict):
+            continue
+        for key in _AUDIO_KEYS:
+            val = source.get(key)
+            if isinstance(val, str) and val and (
+                    "/" in val or val.lower().endswith((".flac", ".mp3", ".wav"))):
+                return val
+    return None
+
+
 class AceStepClient:
     """Async client for the launcher backend. One instance per hub process."""
 
     def __init__(self, base: str | None = None):
         self.base = (base or cfg.ACESTEP_API_BASE).rstrip("/")
+        self._token: str | None = None
 
     async def health(self) -> bool:
         try:
@@ -70,6 +94,31 @@ class AceStepClient:
                 return r.status_code < 500
         except Exception:
             return False
+
+    async def _auth(self, http: httpx.AsyncClient, force: bool = False) -> str:
+        if self._token and not force:
+            return self._token
+        r = await http.post(self.base + CONTRACT["setup"],
+                            json={"username": cfg.ACESTEP_USERNAME})
+        r.raise_for_status()
+        token = r.json().get("token")
+        if not token:
+            raise AceStepError("launcher auth setup returned no token")
+        self._token = str(token)
+        return self._token
+
+    async def _call(self, method: str, path: str, **kw) -> httpx.Response:
+        """One authenticated call; on 401, re-setup once and retry."""
+        async with httpx.AsyncClient(trust_env=False,
+                                     timeout=kw.pop("timeout", 30.0)) as http:
+            token = await self._auth(http)
+            r = await http.request(method, self.base + path,
+                                   headers={"Authorization": f"Bearer {token}"}, **kw)
+            if r.status_code == 401:
+                token = await self._auth(http, force=True)
+                r = await http.request(method, self.base + path,
+                                       headers={"Authorization": f"Bearer {token}"}, **kw)
+            return r
 
     async def submit(self, *, prompt: str, lyrics: str = "", duration: int | None = None,
                      bpm: int | None = None, key_scale: str | None = None,
@@ -80,42 +129,46 @@ class AceStepClient:
                 f"duration {duration}s exceeds ACESTEP_MAX_DURATION "
                 f"({cfg.ACESTEP_MAX_DURATION}s) — Air guardrail")
         payload = {
-            "prompt": prompt,
+            "customMode": bool(lyrics),
+            "songDescription": prompt,
+            "instrumental": not lyrics,
             "lyrics": lyrics,
+            # Best-effort passthrough: honoured if the backend accepts
+            # them, ignored otherwise (the README documents only the
+            # four fields above). Confirm in proof step 2.
             "duration": duration,
             "audio_format": audio_format or cfg.ACESTEP_DEFAULT_FORMAT,
-            "model": cfg.ACESTEP_MODEL,
-            "planner": cfg.ACESTEP_PLANNER,
-            "steps": cfg.ACESTEP_STEPS,
-            "guidance": cfg.ACESTEP_GUIDANCE,
             "seed": seed if seed is not None else -1,
         }
         if bpm:
             payload["bpm"] = bpm
         if key_scale:
-            payload["key_scale"] = key_scale
+            payload["keyScale"] = key_scale
         try:
-            async with httpx.AsyncClient(trust_env=False, timeout=30.0) as http:
-                r = await http.post(self.base + CONTRACT["generate"], json=payload)
-                r.raise_for_status()
-                data = r.json()
+            r = await self._call("POST", CONTRACT["generate"], json=payload)
+            r.raise_for_status()
+            data = r.json()
         except httpx.HTTPError as e:
-            raise AceStepError(f"engine unreachable at {self.base}: {e}") from e
-        job_id = data.get("job_id") or data.get("id") or uuid.uuid4().hex
+            raise AceStepError(f"engine backend unreachable at {self.base}: {e}") from e
+        job_id = data.get("jobId") or data.get("job_id") or data.get("id") \
+            or uuid.uuid4().hex
         return AceJob(job_id=str(job_id), status="running",
                       prompt=prompt, lyrics=lyrics, params=payload)
 
     async def poll(self, job: AceJob) -> AceJob:
         try:
-            async with httpx.AsyncClient(trust_env=False, timeout=10.0) as http:
-                r = await http.get(self.base + CONTRACT["status"].format(job_id=job.job_id))
-                r.raise_for_status()
-                data = r.json()
+            r = await self._call("GET", CONTRACT["status"].format(job_id=job.job_id),
+                                 timeout=10.0)
+            r.raise_for_status()
+            data = r.json()
         except httpx.HTTPError as e:
             job.status, job.error = "error", f"status check failed: {e}"
             return job
+        ref = _find_audio_ref(data)
+        if ref:
+            job.result_ref = ref
         raw = str(data.get("status", "running")).lower()
-        if raw in _DONE:
+        if raw in _DONE or (ref and raw not in _FAIL):
             job.status = "complete"
         elif raw in _FAIL:
             job.status, job.error = "error", str(data.get("error") or raw)
@@ -126,13 +179,25 @@ class AceStepClient:
         return job
 
     async def download(self, job: AceJob, dest_dir: Path) -> Path:
+        ref = job.result_ref
+        if not ref:
+            raise AceStepError(
+                f"job {job.job_id} completed but its status payload carried "
+                "no audio reference — check the payload shape against "
+                "_find_audio_ref in acestep_client.py (proof step 2)")
+        url = ref if ref.startswith("http") else (
+            self.base + (ref if ref.startswith("/") else f"/audio/{ref}"))
         dest_dir.mkdir(parents=True, exist_ok=True)
-        ext = (job.params.get("audio_format") or cfg.ACESTEP_DEFAULT_FORMAT).lower()
-        dest = dest_dir / f"acestep_{job.job_id}.{ext}"
+        ext = Path(ref.split("?")[0]).suffix or \
+            f".{(job.params.get('audio_format') or cfg.ACESTEP_DEFAULT_FORMAT).lower()}"
+        dest = dest_dir / f"acestep_{job.job_id}{ext}"
         try:
-            async with httpx.AsyncClient(trust_env=False, timeout=cfg.ACESTEP_JOB_TIMEOUT) as http:
+            async with httpx.AsyncClient(trust_env=False,
+                                         timeout=cfg.ACESTEP_JOB_TIMEOUT) as http:
+                token = await self._auth(http)
                 async with http.stream(
-                        "GET", self.base + CONTRACT["download"].format(job_id=job.job_id)) as r:
+                        "GET", url,
+                        headers={"Authorization": f"Bearer {token}"}) as r:
                     r.raise_for_status()
                     with dest.open("wb") as f:
                         async for chunk in r.aiter_bytes(65536):

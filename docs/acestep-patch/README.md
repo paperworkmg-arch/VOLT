@@ -36,11 +36,15 @@ In `start.js`, add one step after the Stable Audio daemon block:
 
 ## Verify at drop-in (four small things, all marked in the code)
 
-1. **Launcher contract** — `acestep_client.CONTRACT` assumes the launcher
-   backend (port 3001) exposes `POST /api/generate`,
-   `GET /api/status/{id}`, `GET /api/download/{id}`. Check against the
-   launcher's README during proof step 1; if the paths differ, that dict
-   is the only edit.
+1. **Launcher contract — confirmed 2026-11-02** from the launcher's own
+   README + start.js (read on the Mac): JWT setup at
+   `POST /api/auth/setup`, `POST /api/generate` → `{jobId}`,
+   `GET /api/generate/status/{jobId}`, no download endpoint (audio is
+   referenced by the status payload). The client already speaks exactly
+   this. Two small things remain for proof step 2, against the *running*
+   backend: the status payload's exact audio-reference key (the client
+   searches the common ones) and whether the optional fields
+   (duration/bpm/key) are honoured or ignored.
 2. **Checkpoint name** — `comfyui_client.CHECKPOINT` and node 1 of the
    workflow JSON must match the all-in-one Turbo checkpoint file actually
    in ComfyUI's `models/checkpoints`.

@@ -18,6 +18,11 @@ import config
 # === Master switch (proof step 3 runs behind this) ===
 ACESTEP_ENABLED = os.getenv("ACESTEP_ENABLED", "1").lower() in ("1", "true", "yes")
 
+# The launcher backend is JWT-guarded; the hub sets up a local user and
+# caches its token (see acestep_client). Any name works — it is a local,
+# single-user backend — but keep it stable so repeat setups reuse it.
+ACESTEP_USERNAME = os.getenv("ACESTEP_USERNAME", "volt-hub")
+
 # === Surfaces ===
 # Primary: the staged launcher's backend (ace-step-ui.pinokio).
 # It wraps the engine and exposes the simple job flow: start -> poll -> file.
