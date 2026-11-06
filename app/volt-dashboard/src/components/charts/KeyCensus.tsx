@@ -37,7 +37,7 @@ export default function KeyCensus({ tracks, filters, onCrossFilter }: Props) {
   )
 
   const H = MT * 2 + KEY_COUNTS.length * ROW
-  const max = Math.max(...KEY_COUNTS.map((k) => k.count))
+  const max = Math.max(...KEY_COUNTS.map((k) => k.count)) || 1
   const ANCHOR_KEY = KEY_COUNTS.reduce((a, b) => (b.count > a.count ? b : a), KEY_COUNTS[0])?.key ?? 'C'
 
   useGSAP(

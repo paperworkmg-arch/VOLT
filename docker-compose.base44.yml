@@ -1,0 +1,51 @@
+services:
+  backend:
+    image: python:3.12-slim
+    working_dir: /app/dashboard
+    volumes:
+      - ./app:/app
+    command:
+      - sh
+      - -ec
+      - |
+        mkdir -p data templates sites
+        pip install --no-cache-dir -r requirements.txt
+        exec python -m uvicorn omni:app --host 0.0.0.0 --port 8500 --reload
+    environment:
+      - OMNI_HOST=0.0.0.0
+      - OMNI_PORT=8500
+      - OMNI_DEBUG=true
+    restart: on-failure
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8500/api/health').read()"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  frontend:
+    image: node:22
+    working_dir: /app/volt-dashboard
+    volumes:
+      - ./app/volt-dashboard:/app/volt-dashboard
+    command:
+      - sh
+      - -ec
+      - |
+        npm install
+        exec npm run dev -- --host 0.0.0.0
+    ports:
+      - "3000:3000"
+    environment:
+      - OMNI_API_TARGET=http://backend:8500
+      - __VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: on-failure
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000',r=>process.exit(r.statusCode<400?0:1)).on('error',()=>process.exit(1))"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 40s
